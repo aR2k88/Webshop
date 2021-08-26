@@ -1,11 +1,13 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="app">
+    <v-main class="background">
+      <MainNavBar></MainNavBar>
+      <v-container>
+        <router-view :key="$route.fullPath"></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
+
 </template>
 
 <style lang="scss">
@@ -30,3 +32,9 @@
   }
 }
 </style>
+<script>
+import MainNavBar from "@/components/MainNavBar";
+export default {
+  components: {MainNavBar}
+}
+</script>

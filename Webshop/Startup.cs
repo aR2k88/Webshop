@@ -6,14 +6,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Webshop.DataProviders;
+using Webshop.Infrastructure;
 
 namespace Webshop
 {
     public class Startup
     {
-        private IConfiguration Configuration;
-
-        private Settings _settings;
+        public IConfiguration Configuration;
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public Startup(IConfiguration configuration)
@@ -30,6 +31,11 @@ namespace Webshop
             settings.EnvironmentString =
                 Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?.ToLowerInvariant() ?? "development";
             services.AddSingleton(settings);
+
+            services.AddSingleton(MongoDbConnection.ConnectToMongoDb(settings.MongoDatabase.ConnectionString,
+                settings.MongoDatabase.DatabaseName));
+            services.AddSingleton<ProductDataProvider>();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,11 +47,11 @@ namespace Webshop
             }
 
             app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            // app.UseEndpoints(endpoints =>
+            // {
+            //     endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
+            // });
         }
     }
 }

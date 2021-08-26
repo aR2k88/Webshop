@@ -32,3 +32,15 @@ C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\Serilog.Formatting.
 C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
 C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
 C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\Serilog.Sinks.File.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\DnsClient.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\MongoDB.Bson.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\MongoDB.Driver.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\SharpCompress.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\Arne\RiderProjects\WebShop\Webshop\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
