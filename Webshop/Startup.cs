@@ -38,7 +38,7 @@ namespace Webshop
                 settings.MongoDatabase.DatabaseName));
             services.AddSingleton<IProductDataProvider, ProductDataProvider>();
             services.AddSingleton<ICartDataProvider, CartDataProvider>();
-            services.AddScoped<IShoppingCartService, ShoppingCartService>();
+            services.AddScoped<ICartService, CartService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddControllers();
         }

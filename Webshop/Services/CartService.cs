@@ -7,11 +7,11 @@ using Webshop.Models;
 
 namespace Webshop.Services
 {
-    public class ShoppingCartService : IShoppingCartService
+    public class CartService : ICartService
     {
         private readonly ICartDataProvider _cartDataProvider;
 
-        public ShoppingCartService(ICartDataProvider cartDataProvider)
+        public CartService(ICartDataProvider cartDataProvider)
         {
             _cartDataProvider = cartDataProvider;
         }

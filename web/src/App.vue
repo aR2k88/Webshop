@@ -1,7 +1,10 @@
 <template>
   <v-app id="app">
     <v-main class="background">
+      <v-card color="background">
+      <MainToolbar></MainToolbar>
       <MainNavBar></MainNavBar>
+      </v-card>
       <v-container>
         <router-view :key="$route.fullPath"></router-view>
       </v-container>
@@ -34,7 +37,8 @@
 </style>
 <script>
 import MainNavBar from "@/components/MainNavBar";
+import MainToolbar from "@/components/MainToolbar";
 export default {
-  components: {MainNavBar}
+  components: {MainNavBar, MainToolbar}
 }
 </script>
