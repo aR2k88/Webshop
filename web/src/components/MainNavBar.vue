@@ -1,24 +1,18 @@
 ﻿<template>
-  <v-tabs fixed-tabs background-color="black" dark>
-    <v-tab to="/">
-      Option
-    </v-tab>
-    <v-tab to="/About">
-      Another Selection
-    </v-tab>
-    <v-tab>
-      Items
-    </v-tab>
-    <v-tab>
-      Another Screen
-    </v-tab>
-  </v-tabs>
+<v-card>
+    <MainNavTabs></MainNavTabs>
+</v-card>
 </template>
 
 <script>
+import MainNavTabs from "@/components/MainNavTabs";
 export default {
-  name: "MainNavBar"
+  name: "MainNavBar",
+  components: {
+    MainNavTabs
+  }
 }
+
 </script>
 
 <style scoped>
