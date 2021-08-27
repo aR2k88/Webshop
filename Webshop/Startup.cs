@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Webshop.DataProviders;
 using Webshop.Infrastructure;
+using Webshop.Interfaces;
+using Webshop.Services;
 
 namespace Webshop
 {
@@ -34,7 +36,10 @@ namespace Webshop
 
             services.AddSingleton(MongoDbConnection.ConnectToMongoDb(settings.MongoDatabase.ConnectionString,
                 settings.MongoDatabase.DatabaseName));
-            services.AddSingleton<ProductDataProvider>();
+            services.AddSingleton<IProductDataProvider, ProductDataProvider>();
+            services.AddSingleton<ICartDataProvider, CartDataProvider>();
+            services.AddScoped<IShoppingCartService, ShoppingCartService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddControllers();
         }
 

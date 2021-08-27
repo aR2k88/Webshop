@@ -1,11 +1,14 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using System;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-namespace Webshop.Interfaces.Models
+namespace Webshop.Models
 {
     public class Product
     {
         [BsonId]
-        public string Id { get; set; }
+        [BsonRepresentation(BsonType.String)]
+        public Guid _id { get; set; }
         public string Name { get; set; }
     }
 }

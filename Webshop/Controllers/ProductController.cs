@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Webshop.DataProviders;
-using Webshop.Interfaces.Models;
+using Webshop.Models;
 
 namespace Webshop.Controllers
 {
@@ -9,18 +9,16 @@ namespace Webshop.Controllers
     [Route("api/product")]
     public class ProductController : ControllerBase
     {
-        private readonly ProductDataProvider ProductDataProvider;
+        private readonly ProductDataProvider _productDataProvider;
         public ProductController(ProductDataProvider productDataProvider)
         {
-            ProductDataProvider = productDataProvider;
+            _productDataProvider = productDataProvider;
         }
 
         [Route("create")]
-        public async Task Create()
+        public async Task Create(Product product)
         {
-            var product = new Product();
-            product.Name = "Testproduct";
-            await ProductDataProvider.Create(product);
+            await _productDataProvider.Create(product);
         }
     }
 }
