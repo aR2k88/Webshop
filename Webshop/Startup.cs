@@ -16,6 +16,7 @@ namespace Webshop
     public class Startup
     {
         public IConfiguration Configuration;
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -41,6 +42,16 @@ namespace Webshop
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost",
+                            "http://localhost:8082");
+                        builder.AllowAnyHeader();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +61,7 @@ namespace Webshop
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             // app.UseEndpoints(endpoints =>

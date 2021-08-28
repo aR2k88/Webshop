@@ -1,17 +1,10 @@
 ﻿<template>
   <v-row>
-    <v-col cols="3">
-      <ProductCard></ProductCard>
-    </v-col>
-    <v-col cols="3">
-      <ProductCard></ProductCard>
-    </v-col>
-    <v-col cols="3">
-      <ProductCard></ProductCard>
-    </v-col>
-    <v-col cols="3">
-      <ProductCard></ProductCard>
-    </v-col>
+    <template v-for="product in products">
+      <v-col cols="3" :key="product._id">
+        <ProductCard :product="product"></ProductCard>
+      </v-col>
+    </template>
   </v-row>
 
 </template>
@@ -22,6 +15,11 @@ export default {
   name: "ProductList",
   components: {
     ProductCard
+  },
+  computed: {
+    products() {
+      return this.$store.state.ProductModule.products;
+    }
   }
 }
 </script>

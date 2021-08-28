@@ -38,7 +38,11 @@
 <script>
 import MainNavBar from "@/components/MainNavBar";
 import MainToolbar from "@/components/MainToolbar";
+
 export default {
-  components: {MainNavBar, MainToolbar}
+  components: {MainNavBar, MainToolbar},
+  mounted() {
+     this.$store.dispatch("fetchProducts");
+  }
 }
 </script>

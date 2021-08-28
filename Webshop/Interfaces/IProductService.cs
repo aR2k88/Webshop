@@ -11,6 +11,6 @@ namespace Webshop.Interfaces
         public Task<Product> Save(Product product);
         public Task<Product> Delete(Product product);
         public Task<Product> Get(Guid productId);
-        public Task<IEnumerable<Product>> GetAllProducts();
+        public Task<List<Product>> GetAllProducts();
     }
 }

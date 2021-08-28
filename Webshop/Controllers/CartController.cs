@@ -8,10 +8,10 @@ namespace Webshop.Controllers
 {
     [ApiController]
     [Route("api/cart")]
-    public class ShoppingCartController : ControllerBase
+    public class CartController : ControllerBase
     {
         private readonly ICartService _cartService;
-        public ShoppingCartController(ICartService cartService)
+        public CartController(ICartService cartService)
         {
             _cartService = cartService;
         }
@@ -23,20 +23,24 @@ namespace Webshop.Controllers
         }
 
         [HttpPost]
-        [Route("add/{cartId}")]
-        public async Task<Cart> AddToCart(Guid cartId, [FromBody]Product product)
+        [Route("add")]
+        public async Task<Cart> AddToCart([FromBody]NewCartItem newCartitem)
         {
-            return await _cartService.AddToCart(cartId, product);
+            return await _cartService.AddToCart(newCartitem.CartId, newCartitem.Product);
         }
 
         [HttpPost]
-        [Route("remove/{cartId")]
+        [Route("remove")]
         public async Task<Cart> RemoveFromCart(Guid cartId, [FromBody] Product product)
         {
             return await _cartService.RemoveFromCart(cartId, product);
         }
-            
-        
+
+        public class NewCartItem
+        {
+            public Guid CartId { get; set; }
+            public Product Product { get; set; }
+        }
 
 
     }

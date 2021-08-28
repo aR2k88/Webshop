@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Webshop.DataProviders;
+using Webshop.Interfaces;
 using Webshop.Models;
 
 namespace Webshop.Controllers
@@ -9,25 +12,32 @@ namespace Webshop.Controllers
     [Route("api/product")]
     public class ProductController : ControllerBase
     {
-        private readonly ProductDataProvider _productDataProvider;
-        public ProductController(ProductDataProvider productDataProvider)
+        private readonly IProductService _productService;
+        public ProductController(IProductService productService)
         {
-            _productDataProvider = productDataProvider;
+            _productService = productService;
         }
 
+        [HttpGet]
+        public async Task<List<Product>> GetAllProducts()
+        {
+            var result =  await _productService.GetAllProducts();
+            return result;
+        }
+        [HttpPost]
         [Route("create")]
         public async Task Create(Product product)
         {
-            await _productDataProvider.Create(product);
+            await _productService.Create(product);
         }
-
+        [HttpGet]
         [Route("testnew")]
         public async Task Testnew()
         {
             var product = new Product();
             product.Name = "testproduct";
             product.Price = 299;
-            await _productDataProvider.Create(product);
+            await _productService.Create(product);
         }
     }
 }

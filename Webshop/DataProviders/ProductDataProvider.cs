@@ -37,9 +37,9 @@ namespace Webshop.DataProviders
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return await _collection.Find(_ => true).ToListAsync();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Webshop.Interfaces;
 using Webshop.Models;
@@ -15,10 +16,7 @@ namespace Webshop.Services
             _productDataProvider = productDataProvider;
         }
 
-        public Task<Product> Create(Product product)
-        {
-            throw new NotImplementedException();
-        }
+        public Task<Product> Create(Product product) => _productDataProvider.Create(product);
 
         public Task<Product> Save(Product product)
         {
@@ -35,9 +33,10 @@ namespace Webshop.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<List<Product>> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var result = await _productDataProvider.GetAllProducts();
+            return result.ToList();
         }
     }
 }

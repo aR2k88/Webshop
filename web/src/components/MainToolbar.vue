@@ -8,6 +8,7 @@
     </v-btn>
 
     <v-btn icon>
+      {{countCartItems}}
       <v-icon>mdi-heart</v-icon>
     </v-btn>
     
@@ -16,7 +17,16 @@
 
 <script>
 export default {
-  name: "MainToolbar"
+  name: "MainToolbar",
+  computed: {
+    cart() {
+      return this.$store.state.CartModule.cart;
+    },
+    countCartItems(){
+      if(this.cart.cartItems === undefined) return 0;
+      return this.$store.state.CartModule.cart.cartItems.length;
+    }
+  }
 }
 </script>
 
