@@ -8,7 +8,7 @@
     </v-btn>
 
     <v-btn icon>
-      {{countCartItems}}
+      {{getProductCount}}
       <v-icon>mdi-heart</v-icon>
     </v-btn>
     
@@ -22,10 +22,10 @@ export default {
     cart() {
       return this.$store.state.CartModule.cart;
     },
-    countCartItems(){
-      if(this.cart.cartItems === undefined) return 0;
-      return this.$store.state.CartModule.cart.cartItems.length;
-    }
+    getProductCount(){
+      let test =  this.$store.getters.getProductCount
+      return test;
+    },
   }
 }
 </script>
