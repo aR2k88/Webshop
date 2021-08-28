@@ -20,5 +20,14 @@ namespace Webshop.Controllers
         {
             await _productDataProvider.Create(product);
         }
+
+        [Route("testnew")]
+        public async Task Testnew()
+        {
+            var product = new Product();
+            product.Name = "testproduct";
+            product.Price = 299;
+            await _productDataProvider.Create(product);
+        }
     }
 }

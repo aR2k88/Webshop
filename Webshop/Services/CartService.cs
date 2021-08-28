@@ -16,6 +16,8 @@ namespace Webshop.Services
             _cartDataProvider = cartDataProvider;
         }
 
+        public Task<Cart> Get(Guid cartId) => _cartDataProvider.Get(cartId);
+
         public async Task<Cart> AddToCart(Guid cartId, Product product, int amount = 1)
         {
             Cart cart;
