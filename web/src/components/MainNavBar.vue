@@ -10,7 +10,7 @@
       Historie
     </v-tab>
     <v-tab>
-      Kontact oss
+      Kontakt oss
     </v-tab>
   </v-tabs>
 </template>
