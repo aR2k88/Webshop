@@ -10,5 +10,6 @@ namespace Webshop.Models
         [BsonRepresentation(BsonType.String)]
         public Guid _id { get; set; }
         public string Name { get; set; }
+        public int Price { get; set; }
     }
 }
