@@ -4,7 +4,7 @@
            max-width="350" max-height="250"></v-img>
     <v-container class="pb-11">
       <p class="float-left">{{product.name}}</p>
-      <p class="text-left float-left"> {{productPrice}}</p>
+      <p class="text-left float-left"> {{product.price}}</p>
       <v-btn color="primary" class="float-right" @click="clickBuy(product)">Kjøp</v-btn>
     </v-container>
   </v-card>
@@ -28,10 +28,6 @@ export default {
     }
   },
   computed: {
-    productPrice() {
-      if(!this.product) return 0
-      return this.product.price;
-    },
     cart() {
       return this.$store.state.CartModule.cart;
     }
