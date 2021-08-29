@@ -43,6 +43,15 @@ export default {
   components: {MainNavBar, MainToolbar},
   mounted() {
      this.$store.dispatch("fetchProducts");
+     this.handleCart();
+  },
+  methods: {
+    handleCart() {
+      let cartId = this.$cookie.get('cartId')
+      if(cartId !== null){
+        this.$store.dispatch("fetchCart", cartId)
+      }
+    }
   }
 }
 </script>

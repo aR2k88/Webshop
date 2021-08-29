@@ -1,4 +1,5 @@
 ﻿import axios from "axios";
+import Vue from 'vue'
 export default {
     state: {
         cart: {}
@@ -6,7 +7,6 @@ export default {
     getters: {
         getProductCountInCart(state){
             if(state.cart.cartItems === undefined) return 0;
-            console.log(state.cart)
             if(state.cart.cartItems.length < 1) return 0;
             let count = 0;
             state.cart.cartItems.forEach(x => {
@@ -18,10 +18,11 @@ export default {
     mutations: {
         updateCart(state, cart){
             state.cart = cart;
+            Vue.prototype.$cookie.set('cartId', cart._id, 1);
         }
     },
     actions: {
-       addToCart(state, payload){
+       async addToCart(state, payload){
            let newCartitem = {
                CartId: payload.cartId,
                Product: payload.product
@@ -29,6 +30,11 @@ export default {
            axios.post(`api/cart/add`, newCartitem).then(response => {
                state.commit("updateCart", response.data)
            })
-       }
+       },
+        fetchCart(state, cartId) {
+            axios.get(`api/cart/${cartId}`).then(response => {
+                state.commit("updateCart", response.data)
+            })
+        }
     }
 }

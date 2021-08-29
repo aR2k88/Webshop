@@ -16,7 +16,14 @@ namespace Webshop.Services
             _cartDataProvider = cartDataProvider;
         }
 
-        public Task<Cart> Get(Guid cartId) => _cartDataProvider.Get(cartId);
+        public async Task<Cart> Get(string cartIdString)
+        {
+            if (Guid.TryParse(cartIdString, out Guid cartId))
+            {
+                return await _cartDataProvider.Get(cartId);
+            }
+            return new Cart();
+        }
 
         public async Task<Cart> AddToCart(Guid cartId, Product product, int amount = 1)
         {

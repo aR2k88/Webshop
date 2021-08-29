@@ -18,12 +18,13 @@ export default {
 
   },
   methods: {
-    clickBuy(product) {
+    async clickBuy(product) {
       let payload = {
         cartId: this.cart._id,
         product: product
       }
-      this.$store.dispatch("addToCart", payload);
+      await this.$store.dispatch("addToCart", payload)
+
     }
   },
   computed: {

@@ -17,9 +17,10 @@ namespace Webshop.Controllers
         }
 
         [HttpGet]
-        public async Task<Cart> GetCart(Guid cartId)
+        [Route("{cartIdString}")]
+        public async Task<Cart> GetCart(string cartIdString)
         {
-            return await _cartService.Get(cartId);
+            return await _cartService.Get(cartIdString);
         }
 
         [HttpPost]
