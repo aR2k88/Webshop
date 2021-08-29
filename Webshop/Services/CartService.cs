@@ -46,7 +46,7 @@ namespace Webshop.Services
             else
             {
                 cart.CartItems.Remove(existingItem);
-                existingItem.Number += amount;
+                existingItem.Quantity += amount;
                 cart.CartItems.Add(existingItem);
             }
             
@@ -59,8 +59,8 @@ namespace Webshop.Services
             var existingItem = cart.CartItems.SingleOrDefault(x => x.Product._id == product._id);
             if (existingItem == null) return cart;
             cart.CartItems.Remove(existingItem);
-            existingItem.Number -= 1;
-            if (existingItem.Number < 0) existingItem.Number = 0;
+            existingItem.Quantity -= 1;
+            if (existingItem.Quantity < 0) existingItem.Quantity = 0;
             cart.CartItems.Add(existingItem);
             return await _cartDataProvider.Save(cart);
         }

@@ -10,7 +10,7 @@ export default {
             if(state.cart.cartItems.length < 1) return 0;
             let count = 0;
             state.cart.cartItems.forEach(x => {
-                count += x.number
+                count += x.quantity
             })
             return count;
         }
