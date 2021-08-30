@@ -20,7 +20,7 @@ RUN npm run build
 
 
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
 WORKDIR /app
 
 # Copy everything else and build
@@ -30,5 +30,5 @@ RUN dotnet publish -c Release -o out
 
 
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Webshop.dll"]
