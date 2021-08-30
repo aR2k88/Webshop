@@ -7,16 +7,31 @@ COPY . ./
 WORKDIR /app/
 RUN dotnet publish -c Release -o out
 
-WORKDIR /app/Web
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
-
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Webshop.dll"]
+
+FROM node:lts-alpine
+
+# install simple http server for serving static content
+RUN npm install -g http-server
+
+# make the 'app' folder the current working directory
+WORKDIR /app
+
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
+
+# install project dependencies
+RUN npm install
+
+# copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .
+
+# build app for production with minification
+RUN npm run build
+
+EXPOSE 8080
+CMD [ "http-server", "dist" ]
