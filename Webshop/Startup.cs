@@ -48,7 +48,7 @@ namespace Webshop
                     builder =>
                     {
                         builder.WithOrigins("http://localhost",
-                            "http://localhost:8082");
+                            "http://localhost:8080");
                         builder.AllowAnyHeader();
                     });
             });
