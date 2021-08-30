@@ -7,6 +7,14 @@ COPY . ./
 WORKDIR /app/
 RUN dotnet publish -c Release -o out
 
+WORKDIR/app/Web
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+EXPOSE 8080
+CMD [ "http-server", "dist" ]
+
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
