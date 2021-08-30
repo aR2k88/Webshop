@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-WORKDIR /app
+WORKDIR /app/
 EXPOSE 8080
 EXPOSE 1337
 EXPOSE 443
