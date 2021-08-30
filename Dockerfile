@@ -28,7 +28,7 @@ COPY /web/package*.json ./
 RUN npm install
 
 # copy project files and folders to the current working directory (i.e. 'app' folder)
-COPY . .
+COPY /web/. .
 
 # build app for production with minification
 RUN npm run build
