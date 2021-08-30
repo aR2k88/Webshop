@@ -13,7 +13,7 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Webshop.dll"]
 
-FROM node:lts-alpine
+FROM node:16-alpine3.11
 
 # install simple http server for serving static content
 RUN npm install -g http-server
