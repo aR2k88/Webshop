@@ -1,17 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
 WORKDIR /app
-
-# Copy everything else and build
-COPY . ./
-WORKDIR /app/
-RUN dotnet publish -c Release -o out
-
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
-WORKDIR /app
-COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "Webshop.dll"]
+EXPOSE 8080
+EXPOSE 1337
+EXPOSE 443
 
 FROM node:16-alpine3.11
 
@@ -33,5 +25,13 @@ COPY /web/. .
 # build app for production with minification
 RUN npm run build
 
-EXPOSE 8080
-CMD [ "http-server", "dist" ]
+# Copy everything else and build
+COPY . ./
+WORKDIR /app/
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "Webshop.dll"]
