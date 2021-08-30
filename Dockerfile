@@ -7,7 +7,7 @@ COPY . ./
 WORKDIR /app/
 RUN dotnet publish -c Release -o out
 
-WORKDIR/app/Web
+WORKDIR /app/Web
 COPY package*.json ./
 RUN npm install
 COPY . .
