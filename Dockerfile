@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy everything else and build
 COPY . ./
-WORKDIR /app/Webshop
+WORKDIR /app/
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
