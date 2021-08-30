@@ -8,6 +8,7 @@
         <template v-for="item in cart.cartItems">
           <v-list-item :key="item.product._id">{{ item.product.name }} - {{item.quantity}}</v-list-item>
         </template>
+        <v-list-item v-if="getProductCountInCart > 0">Gå til Kasse</v-list-item>
       </v-list>
     </v-menu>
 </template>
