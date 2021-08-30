@@ -1,3 +1,6 @@
+# syntax=docker/dockerfile:1
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
+WORKDIR /app
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
@@ -18,10 +21,6 @@ COPY /web/. .
 # build app for production with minification
 RUN npm run build
 
-
-# syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
-WORKDIR /app
 
 # Copy everything else and build
 COPY . ./
