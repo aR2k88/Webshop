@@ -4,6 +4,7 @@ import ProductModule from './Modules/ProductModule'
 import CartModule from "@/store/Modules/CartModule";
 
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
