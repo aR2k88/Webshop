@@ -13,6 +13,7 @@ COPY /Webshop/. .
 
 COPY /web/package*.json ./
 COPY /web/. .
+run npm install
 ENV NODE_ENV=production
 RUN npm ci
 run npm run build
