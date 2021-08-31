@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS build
 COPY --from=node_base . .
 
 WORKDIR /Webshop
-COPY Webshop/Webshop.csproj
+COPY Webshop/Webshop.csproj, Webshop/
 RUN dotnet restore Webshop/Webshop.csproj
 COPY /Webshop/. .
 
@@ -20,7 +20,7 @@ FROM build AS publish
 RUN dotnet publish Webshop.csproj -c Release -o /app/publish
 
 FROM base AS final
-expose 8080
+EXPOSE 8080
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Webshop.dll"]
