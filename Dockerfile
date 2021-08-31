@@ -8,7 +8,7 @@ COPY --from=node_base . .
 
 WORKDIR /Webshop
 COPY ["Webshop/Webshop.csproj", "Webshop/."]
-RUN dotnet restore "Webshop/Webshop.csproj"
+RUN dotnet restore "Webshop.csproj"
 COPY /Webshop/. .
 
 ENV NODE_ENV=production
