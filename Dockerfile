@@ -1,30 +1,29 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
+
 WORKDIR /app
+COPY . ./
+COPY Webshop/Webshop.csproj ./Webshop
+RUN dotnet restore ./Webshop
 
-FROM node:16-alpine3.11 AS node_base
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-COPY --from=node_base . .
+WORKDIR /app/Webshop
+RUN dotnet publish -c Release -o dist
 
+FROM node:16-alpine3.11 AS buildvue
 WORKDIR /Webshop
-COPY ["Webshop/Webshop.csproj", "Webshop/"]
-RUN dotnet restore "Webshop/Webshop.csproj"
-COPY /Webshop/. .
-
-COPY /web/package*.json ./
-COPY . .
-RUN npm install @vue/cli-service --save-dev
-run npm install
+COPY web/package*.json ./
 RUN npm ci
+
+COPY web .
 RUN npm run build
-RUN dotnet publish Webshop.csproj -c Release
 
-FROM build AS publish
-RUN dotnet publish Webshop.csproj -c Release -o /app/publish
-
-FROM base AS final
-EXPOSE 8080
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Webshop.dll"]
+
+EXPOSE 8080
+
+COPY --from=build /app/Webshop/dist .
+COPY --from=buildvue Webshop/dist /app/wwwroot
+CMD ["dotnet", "Webshop.dll"]
+
 
