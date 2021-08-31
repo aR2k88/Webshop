@@ -24,6 +24,6 @@ EXPOSE 8080
 
 COPY --from=build /app/Webshop/dist .
 COPY --from=buildvue Webshop/dist /app/wwwroot
-CMD ["dotnet", "Webshop.dll"]
+CMD ["dotnet", "Webshop.dll", "http-server", "dist"]
 
 
