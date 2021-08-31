@@ -11,6 +11,8 @@ COPY ["Webshop/Webshop.csproj", "Webshop/"]
 RUN dotnet restore "Webshop/Webshop.csproj"
 COPY /Webshop/. .
 
+COPY /web/package*.json ./
+COPY /web/. .
 ENV NODE_ENV=production
 RUN npm ci
 run npm run build
