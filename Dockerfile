@@ -16,7 +16,7 @@ COPY /web/. .
 run npm install
 ENV NODE_ENV=production
 RUN npm ci
-run npm run build
+RUN npm run build
 RUN dotnet publish Webshop.csproj -c Release
 
 FROM build AS publish
