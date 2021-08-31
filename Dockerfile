@@ -12,7 +12,7 @@ RUN dotnet restore "Webshop/Webshop.csproj"
 COPY /Webshop/. .
 
 COPY /web/package*.json ./
-COPY /web/. .
+COPY . .
 run npm install
 ENV NODE_ENV=production
 RUN npm ci
