@@ -3,11 +3,11 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 
 FROM node:16-alpine3.11 AS node_base
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 COPY --from=node_base . .
 
 WORKDIR /Webshop
-COPY . ./
+COPY Webshop.csproj, /Webshop
 RUN dotnet restore Webshop.csproj
 COPY /Webshop/. .
 
