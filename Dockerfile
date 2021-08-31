@@ -9,7 +9,7 @@ COPY --from=node_base . .
 WORKDIR /Webshop
 COPY Webshop/Webshop.csproj
 RUN dotnet restore Webshop/Webshop.csproj
-COPY /web .
+COPY /Webshop/. .
 
 ENV NODE_ENV=production
 RUN npm ci
