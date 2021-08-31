@@ -7,8 +7,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS build
 COPY --from=node_base . .
 
 WORKDIR /Webshop
-COPY Webshop/Webshop.csproj, Webshop/
-RUN dotnet restore Webshop/Webshop.csproj
+COPY Webshop.csproj, Webshop/
+RUN dotnet restore Webshop.csproj
 COPY /Webshop/. .
 
 ENV NODE_ENV=production
