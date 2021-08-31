@@ -13,6 +13,7 @@ COPY /Webshop/. .
 
 COPY /web/package*.json ./
 COPY . .
+RUN npm install @vue/cli-service --save-dev
 run npm install
 ENV NODE_ENV=production
 RUN npm ci
