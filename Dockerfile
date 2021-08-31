@@ -21,9 +21,11 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine
 WORKDIR /app
 
 EXPOSE 8080
+EXPOSE 80
+EXPOSE 1337
 
 COPY --from=build /app/Webshop/dist .
 COPY --from=buildvue Webshop/dist /app/wwwroot
-CMD ["dotnet", "Webshop.dll", "http-server", "dist"]
+CMD ["dotnet", "Webshop.dll"]
 
 
