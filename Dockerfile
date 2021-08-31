@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 COPY --from=node_base . .
 
 WORKDIR /Webshop
-COPY /Webshop/Webshop.csproj, /Webshop
+COPY Webshop/Webshop.csproj, Webshop/
 RUN dotnet restore Webshop.csproj
 COPY /Webshop/. .
 
