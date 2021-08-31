@@ -15,7 +15,6 @@ COPY /web/package*.json ./
 COPY . .
 RUN npm install @vue/cli-service --save-dev
 run npm install
-ENV NODE_ENV=production
 RUN npm ci
 RUN npm run build
 RUN dotnet publish Webshop.csproj -c Release
