@@ -49,7 +49,7 @@ namespace Webshop
                     {
                         builder.WithOrigins("http://localhost",
                             "http://localhost:8080",
-                            "https://*.rutefjord.no");
+                            "https://webshop.dev.rutefjord.no");
                         builder.AllowAnyHeader();
                     });
             });
