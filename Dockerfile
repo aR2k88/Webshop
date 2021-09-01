@@ -10,7 +10,6 @@ WORKDIR /app
 COPY web/package*.json ./
 RUN npm install
 COPY web .
-RUN npm run build
 
 FROM node:15-alpine as basenode
 
@@ -22,6 +21,9 @@ EXPOSE 8080
 
 COPY --from=build /app/src/Webshop/out .
 COPY --from=buildvue /app /app/wwwroot
+WORKDIR /app/wwwroot
+RUN npm run build
+WORKDIR /app
 CMD ["dotnet", "Webshop.dll"]
 
 
