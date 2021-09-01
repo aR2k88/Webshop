@@ -6,8 +6,8 @@
     <v-tab to="/About">
       Produkter
     </v-tab>
-    <v-tab>
-      Historie
+    <v-tab @click="testFunction">
+      Historie {{ testvalue }}
     </v-tab>
     <v-tab>
       Kontakt oss
@@ -16,9 +16,20 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "MainNavBar",
-  components: {
+  data: function () {
+    return {
+      testValue: "",
+    }
+  },
+  components: {},
+  methods: {
+    testFunction() {
+      var result = axios.get("api/product/test")
+      this.testvalue = result.data;
+    }
   }
 }
 

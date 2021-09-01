@@ -40,7 +40,7 @@ namespace Webshop.Controllers
 
         [HttpGet]
         [Route("Test")]
-        public async Task<string> Test()
+        public string Test()
         {
             return "WOHOO";
         }
