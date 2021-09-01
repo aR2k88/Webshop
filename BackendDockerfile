@@ -5,8 +5,11 @@ COPY . ./
 WORKDIR /app/src/Webshop
 RUN dotnet publish -c Release -o out
 
-EXPOSE 8080
-
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine
+WORKDIR /app
+EXPOSE 1337
+COPY --from=build /app/src/Webshop/out .
 CMD ["dotnet", "Webshop.dll"]
+
 
 
