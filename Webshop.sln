@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop", "Webshop\Webshop.csproj", "{D087654A-E7ED-4ED4-BEBE-DEB038E64FF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop", "src\Webshop\Webshop.csproj", "{5EE07144-E1E1-47E5-B1F2-A97115013234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D087654A-E7ED-4ED4-BEBE-DEB038E64FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D087654A-E7ED-4ED4-BEBE-DEB038E64FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D087654A-E7ED-4ED4-BEBE-DEB038E64FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D087654A-E7ED-4ED4-BEBE-DEB038E64FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE07144-E1E1-47E5-B1F2-A97115013234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE07144-E1E1-47E5-B1F2-A97115013234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE07144-E1E1-47E5-B1F2-A97115013234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE07144-E1E1-47E5-B1F2-A97115013234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

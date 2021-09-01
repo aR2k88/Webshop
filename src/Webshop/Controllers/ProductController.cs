@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Webshop.DataProviders;
 using Webshop.Interfaces;
 using Webshop.Models;
 
@@ -39,5 +37,13 @@ namespace Webshop.Controllers
             product.Price = 299;
             await _productService.Create(product);
         }
+
+        [HttpGet]
+        [Route("Test")]
+        public async Task<string> Test()
+        {
+            return "WOHOO";
+        }
+        
     }
 }

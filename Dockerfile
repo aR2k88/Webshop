@@ -2,30 +2,29 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 
 WORKDIR /app
-COPY . ./
-COPY Webshop/Webshop.csproj ./Webshop
-RUN dotnet restore ./Webshop
+COPY src/Webshop/*.csproj ./src/Webshop
+RUN dotnet restore ./src/Webshop
 
-WORKDIR /app/Webshop
+COPY . ./
+WORKDIR /app/src/Webshop
 RUN dotnet publish -c Release -o dist
 
-FROM node:16-alpine3.11 AS buildvue
-WORKDIR /Webshop
+FROM node:15-alpine AS buildvue
+WORKDIR /src
 COPY web/package*.json ./
 RUN npm ci
 
 COPY web .
+ARG VUE_APP_PUBLIC_PATH=/
 RUN npm run build
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine
 WORKDIR /app
 
 EXPOSE 8080
-EXPOSE 80
-EXPOSE 1337
 
-COPY --from=build /app/Webshop/dist .
-COPY --from=buildvue Webshop/dist /app/wwwroot
+COPY --from=build /app/src/Webshop/dist .
+COPY --from=buildvue /src/dist /app/wwwroot
 CMD ["dotnet", "Webshop.dll"]
 
 
