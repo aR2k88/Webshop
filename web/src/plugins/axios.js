@@ -4,15 +4,15 @@ import Vue from 'vue';
 import axios from "axios";
 
 // Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = 'https://webshop-api.dev.rutefjord.no';
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+console.log(process.env)
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
  axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.post['Access-Control-Allow-Headers'] = "Origin, X-Requested-With, Content-Type, Accept";
 
-let config = {
-  // baseURL: process.env.baseURL || process.env.apiUrl || ""
-  baseURL: 'http://localhost:1337/',
+let config = { 
+  baseURL: process.env.baseURL || process.env.apiUrl || "",
   timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 };
