@@ -1,15 +1,25 @@
 ﻿<template>
-  <v-toolbar color="background">
-    <v-img>logo</v-img>
+  <v-row>
+    <v-col></v-col>
+    <v-col cols="7">
+  <v-toolbar color="background" flat>
+    <v-toolbar-title>
+      logo
+    </v-toolbar-title>
     <v-spacer></v-spacer>
-
-    <v-btn icon>
-      <v-icon>mdi-magnify</v-icon>
-    </v-btn>
-    
-    <QuickCart></QuickCart>
+    <v-toolbar-items>
+      <v-btn  icon>
+        <v-icon large>mdi-magnify</v-icon>
+      </v-btn>
+    </v-toolbar-items>
+    <v-toolbar-items>
+      <QuickCart></QuickCart>
+    </v-toolbar-items>
 
   </v-toolbar>
+    </v-col>
+    <v-col></v-col>
+  </v-row>
 </template>
 
 <script>
@@ -21,8 +31,7 @@ export default {
     QuickCart
   },
   data: function () {
-    return {
-    }
+    return {}
   },
   computed: {
     cart() {

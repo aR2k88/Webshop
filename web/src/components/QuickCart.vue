@@ -1,8 +1,11 @@
 ﻿<template>
     <v-menu offset-y :close-on-content-click="false">
       <template v-slot:activator="{ on }">
-          <v-icon v-on="on">mdi-heart</v-icon>
-        {{getProductCountInCart}}
+        <div class="text-center">
+        <v-btn v-on="on" fab dark color="primary" class="mt-2" small>
+          <h3 class="white--text">{{getProductCountInCart}}</h3>
+        </v-btn>
+        </div>
       </template>
       <v-list>
         <template v-for="item in cart.cartItems">

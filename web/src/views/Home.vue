@@ -1,8 +1,7 @@
 <template>
-  <div class="about">
-    <h1>This is the home page</h1>
+  <v-container>
     <ProductList></ProductList>
-  </div>
+  </v-container>
 </template>
 
 <script>
