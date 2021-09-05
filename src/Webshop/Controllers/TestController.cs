@@ -11,11 +11,10 @@ namespace Webshop.Controllers
     public class TestController : ControllerBase
     {
         private readonly IProductService _productService;
-        private readonly ICategoryService _categoryService;
-        public TestController(IProductService productService, ICategoryService categoryService)
+
+        public TestController(IProductService productService)
         {
             _productService = productService;
-            _categoryService = categoryService;
         }
         [HttpGet]
         [Route("product/testnew")]
@@ -27,13 +26,7 @@ namespace Webshop.Controllers
             product.Category = "Fat";
             await _productService.Create(product);
         }
-        [HttpGet]
-        [Route("category/testnew")]
-        public async Task NewCategory()
-        {
-            var categoryString = "Fat";
-            await _categoryService.CreateCategory(categoryString);
-        }
+ 
         
     }
 }

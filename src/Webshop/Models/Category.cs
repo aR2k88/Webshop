@@ -6,10 +6,6 @@ namespace Webshop.Models
     {
         [BsonId]
         public string CategoryName { get; set; }
-
-        public Category(string categoryName)
-        {
-            CategoryName = categoryName;
-        }
+        
     }
 }

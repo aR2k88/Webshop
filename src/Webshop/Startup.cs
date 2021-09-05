@@ -44,7 +44,6 @@ namespace Webshop
             services.AddSingleton<ICartService, CartService>();
             services.AddSingleton<IProductService, ProductService>();
             services.AddSingleton<IUrlManagerService, UrlManagerService>();
-            services.AddSingleton<ICategoryService, CategoryService>();
             services.AddControllers();
             services.AddCors(options =>
             {

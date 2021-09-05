@@ -10,19 +10,6 @@
     </v-flex>
   </v-container>
 </template>
-<!--<template>-->
-<!--  <v-row>-->
-<!--    <v-col-->
-<!--        v-for="product in products"-->
-<!--        :key="product._id"-->
-<!--        class="d-flex child-flex"-->
-<!--        :cols="productInListCount"-->
-<!--    >-->
-<!--      <ProductCard :product="product"></ProductCard>-->
-<!--    </v-col>-->
-<!--  </v-row>-->
-<!--</template>-->
-
 <script>
 import ProductCard from "@/components/ProductCard";
 export default {

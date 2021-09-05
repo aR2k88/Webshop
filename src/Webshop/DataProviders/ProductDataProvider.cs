@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Webshop.Interfaces;
 using Webshop.Models;
@@ -11,9 +12,10 @@ namespace Webshop.DataProviders
     {
         public Task<Product> Create(Product product);
         public Task<Product> Update(Product product);
-        public Task<Product> Delete(Product product);
+        public Task Delete(Product product);
         public Task<Product> Get(Guid productId);
         public Task<IEnumerable<Product>> GetAllProducts();
+        public Task<List<string>> GetProductCategories();
     }
     public class ProductDataProvider : IProductDataProvider
     {
@@ -30,14 +32,21 @@ namespace Webshop.DataProviders
             return product;
         }
 
-        public Task<Product> Update(Product product)
+        public async Task<List<string>> GetProductCategories()
         {
-            throw new System.NotImplementedException();
+            var res = await _collection.DistinctAsync(x => x.Category, new BsonDocument());
+            return res.ToList();
         }
 
-        public Task<Product> Delete(Product product)
+        public async Task<Product> Update(Product product)
         {
-            throw new System.NotImplementedException();
+            await _collection.ReplaceOneAsync(x => x._id == product._id, product);
+            return product;
+        }
+
+        public async Task Delete(Product product)
+        {
+            await _collection.DeleteOneAsync(x => x._id == product._id);
         }
 
         public async Task<Product> Get(Guid productId)
