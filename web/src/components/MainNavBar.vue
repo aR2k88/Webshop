@@ -1,40 +1,51 @@
 ﻿<template>
-  <v-tabs fixed-tabs background-color="background">
-    <v-tab to="/">
-      Hjem
-    </v-tab>
-    <v-tab to="/About">
-      Produkter
-    </v-tab>
-    <v-tab @click="testFunction">
-      Historie {{ testvalue }}
-    </v-tab>
-    <v-tab>
-      Kontakt oss
-    </v-tab>
-  </v-tabs>
+  <v-row class="d-none d-sm-flex">
+    <v-col cols="3">
+      <v-btn text to="/">
+        <h2>Hjem</h2>
+      </v-btn>
+    </v-col>
+    <v-col cols="3" id="2">
+      <v-btn text>
+        <h2>Produkter</h2>
+      </v-btn>
+    </v-col>
+    <v-col cols="3" id="3">
+      <v-btn text to="/About">
+        <h2>Historie</h2>
+      </v-btn>
+    </v-col>
+    <v-col cols="3" id="4">
+      <v-btn text>
+        <h2>Kontakt oss</h2>
+      </v-btn>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "MainNavBar",
   data: function () {
     return {
-      testValue: "",
+      activeTab: 1
     }
   },
   components: {},
   methods: {
-    testFunction() {
-      var result = axios.get("api/product/test")
-      this.testvalue = result.data;
+    changeTab(item) {
+      console.log(item)
     }
   }
 }
 
 </script>
-
 <style scoped>
 
+.v-btn::before {
+  background-color: #F0EFED;
+}
+.v-btn--active h2 {
+  text-decoration: underline;
+}
 </style>

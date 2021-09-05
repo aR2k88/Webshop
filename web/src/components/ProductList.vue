@@ -1,12 +1,14 @@
 ﻿<template>
-  <v-row>
-    <template v-for="product in products">
-      <v-col cols="3" :key="product._id">
-        <ProductCard :product="product"></ProductCard>
-      </v-col>
-    </template>
-  </v-row>
-
+  <v-layout row wrap>
+    <v-flex xs12>
+    <v-row no-gutters>
+  <v-card v-for="product in products" :key="product._id" class="ma-2">
+    <product-card :product="product">
+    </product-card>
+  </v-card>
+    </v-row>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -19,6 +21,12 @@ export default {
   computed: {
     products() {
       return this.$store.state.ProductModule.products;
+    },
+    productInListCount() {
+      switch(this.$vuetify.breakpoint.name) {
+        case 'xs': return 2
+        default: return 4
+      }
     }
   }
 }
