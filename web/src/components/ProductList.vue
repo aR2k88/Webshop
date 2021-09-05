@@ -1,6 +1,6 @@
 ﻿<template>
     <v-layout row wrap>
-      <v-flex xs6 md4 lg3 v-for="product in products" :key="product._id">
+      <v-flex xs12 sm6 md4 lg3 v-for="product in products" :key="product._id">
         <product-card :product="product"></product-card>
       </v-flex>
     </v-layout>
