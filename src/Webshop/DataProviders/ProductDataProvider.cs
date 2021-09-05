@@ -7,6 +7,14 @@ using Webshop.Models;
 
 namespace Webshop.DataProviders
 {
+    public interface IProductDataProvider
+    {
+        public Task<Product> Create(Product product);
+        public Task<Product> Update(Product product);
+        public Task<Product> Delete(Product product);
+        public Task<Product> Get(Guid productId);
+        public Task<IEnumerable<Product>> GetAllProducts();
+    }
     public class ProductDataProvider : IProductDataProvider
     {
         private readonly IMongoCollection<Product> _collection;
@@ -32,9 +40,10 @@ namespace Webshop.DataProviders
             throw new System.NotImplementedException();
         }
 
-        public Task<Product> Get(Guid productId)
+        public async Task<Product> Get(Guid productId)
         {
-            throw new NotImplementedException();
+            var res = await _collection.FindAsync(x => x._id == productId);
+            return res.FirstOrDefault();
         }
 
         public async Task<IEnumerable<Product>> GetAllProducts()

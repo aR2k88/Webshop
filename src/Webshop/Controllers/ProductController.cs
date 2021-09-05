@@ -22,28 +22,6 @@ namespace Webshop.Controllers
             var result =  await _productService.GetAllProducts();
             return result;
         }
-        [HttpPost]
-        [Route("create")]
-        public async Task Create(Product product)
-        {
-            await _productService.Create(product);
-        }
-        [HttpGet]
-        [Route("testnew")]
-        public async Task Testnew()
-        {
-            var product = new Product();
-            product.Name = "testproduct";
-            product.Price = 299;
-            await _productService.Create(product);
-        }
 
-        [HttpGet]
-        [Route("Test")]
-        public string Test()
-        {
-            return "WOHOO";
-        }
-        
     }
 }

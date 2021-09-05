@@ -38,9 +38,13 @@ namespace Webshop
             services.AddSingleton(MongoDbConnection.ConnectToMongoDb(settings.MongoDatabase.ConnectionString,
                 settings.MongoDatabase.DatabaseName));
             services.AddSingleton<IProductDataProvider, ProductDataProvider>();
+            services.AddSingleton<ICategoryDataProvider, CategoryDataProvider>();
+            services.AddSingleton<IProductUrlDataProvider, ProductUrlDataProvider>();
             services.AddSingleton<ICartDataProvider, CartDataProvider>();
-            services.AddScoped<ICartService, CartService>();
-            services.AddScoped<IProductService, ProductService>();
+            services.AddSingleton<ICartService, CartService>();
+            services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<IUrlManagerService, UrlManagerService>();
+            services.AddSingleton<ICategoryService, CategoryService>();
             services.AddControllers();
             services.AddCors(options =>
             {

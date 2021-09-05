@@ -1,7 +1,7 @@
 ﻿<template>
   <v-card color="secondary" flat @click="goToProduct">
     <v-img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-           max-width="350" max-height="250"></v-img>
+           max-width="300" max-height="250"></v-img>
     <v-row>
       <v-col cols="8" class="pl-5">
         <h2 class="float-left font-weight-500">{{product.name}}</h2>

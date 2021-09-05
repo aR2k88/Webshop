@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-layout row wrap>
+  <v-container row wrap>
     <v-flex xs12>
     <v-row no-gutters>
   <v-card v-for="product in products" :key="product._id" class="ma-2">
@@ -8,8 +8,20 @@
   </v-card>
     </v-row>
     </v-flex>
-  </v-layout>
+  </v-container>
 </template>
+<!--<template>-->
+<!--  <v-row>-->
+<!--    <v-col-->
+<!--        v-for="product in products"-->
+<!--        :key="product._id"-->
+<!--        class="d-flex child-flex"-->
+<!--        :cols="productInListCount"-->
+<!--    >-->
+<!--      <ProductCard :product="product"></ProductCard>-->
+<!--    </v-col>-->
+<!--  </v-row>-->
+<!--</template>-->
 
 <script>
 import ProductCard from "@/components/ProductCard";
@@ -24,8 +36,9 @@ export default {
     },
     productInListCount() {
       switch(this.$vuetify.breakpoint.name) {
-        case 'xs': return 2
-        default: return 4
+        case 'xs': return 6
+        case 'sm': return 4
+        default: return 3
       }
     }
   }

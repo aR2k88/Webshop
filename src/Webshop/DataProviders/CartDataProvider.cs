@@ -6,6 +6,12 @@ using Webshop.Models;
 
 namespace Webshop.DataProviders
 {
+    public interface ICartDataProvider
+    {
+        Task<Cart> Create(Cart cart);
+        Task<Cart> Save(Cart cart);
+        Task<Cart> Get(Guid cartId);
+    }
     public class CartDataProvider : ICartDataProvider
     {
         private readonly IMongoCollection<Cart> _collection;

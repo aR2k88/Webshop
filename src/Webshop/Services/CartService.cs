@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Webshop.DataProviders;
 using Webshop.Interfaces;
 using Webshop.Models;
 
