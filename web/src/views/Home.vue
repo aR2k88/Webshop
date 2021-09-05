@@ -1,7 +1,5 @@
 <template>
-  <v-container>
-    <ProductList></ProductList>
-  </v-container>
+  <ProductList></ProductList>
 </template>
 
 <script>
@@ -10,7 +8,12 @@ import ProductList from "@/components/ProductList";
 export default {
   name: 'Home',
   components: {
-    ProductList
+    ProductList,
+  },
+  computed: {
+    products() {
+      return this.$store.state.ProductModule.products;
+    }
   }
 }
 </script>

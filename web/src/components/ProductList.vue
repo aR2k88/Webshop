@@ -1,14 +1,9 @@
 ﻿<template>
-  <v-container row wrap>
-    <v-flex xs12>
-      <v-row no-gutters>
-        <v-card v-for="product in products" :key="product._id" class="ma-2" flat>
-          <product-card :product="product">
-          </product-card>
-        </v-card>
-      </v-row>
-    </v-flex>
-  </v-container>
+    <v-layout row wrap>
+      <v-flex xs6 md4 lg3 v-for="product in products" :key="product._id">
+        <product-card :product="product"></product-card>
+      </v-flex>
+    </v-layout>
 </template>
 <script>
 import ProductCard from "@/components/ProductCard";

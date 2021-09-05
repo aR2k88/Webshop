@@ -1,21 +1,23 @@
 ﻿<template>
-  <v-card color="secondary" flat @click="goToProduct">
-    <v-img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-           max-width="350" min-width="200" max-height="250"></v-img>
-    <v-row>
-      <v-col cols="8" class="pl-5">
-        <h2 class="float-left font-weight-500">{{product.name}}</h2>
-        <br />
-        <br />
-        <h4 class="float-left">{{product.price}} nok</h4>
-      </v-col>
-      <v-col cols="4">
-        <v-container>
-        <v-btn color="primary" class="float-right pb-6 pt-6 pa-5" @click="clickBuy(product)">Kjøp</v-btn>
-        </v-container>
-      </v-col>
-    </v-row>
-  </v-card>
+  <v-container color="secondary" flat @click="goToProduct" max-width="90%" class="mt-6">
+    <v-layout>
+    <v-img width="100%" src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+           ></v-img>
+    </v-layout>
+    <v-layout class="ml-1 mt-3 mr-1">
+      <v-flex class="text-left text-wrap text-break">
+        <span class="text-align-last productName">{{product.name}}</span>
+      </v-flex>
+    </v-layout>
+    <v-layout row class="ml-1 mr-1 mt-1">
+      <v-flex>
+        <span class="float-left">{{product.price}} nok</span>
+      </v-flex>
+      <v-flex>
+        <v-btn color="primary" @click="clickBuy(product)" class="float-end">Kjøp</v-btn>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -47,5 +49,10 @@ export default {
 </script>
 
 <style scoped>
+
+.productName {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 
 </style>
