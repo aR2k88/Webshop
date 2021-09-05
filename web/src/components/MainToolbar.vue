@@ -1,7 +1,7 @@
 ﻿<template>
   <v-container color="background">
       <v-app-bar color="background" flat>
-        <v-app-bar-nav-icon class="d-flex d-md-none" @click="drawer = true"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon class="d-flex d-lg-none" @click="drawer = true"></v-app-bar-nav-icon>
         <v-toolbar-title>
           logo
         </v-toolbar-title>

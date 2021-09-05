@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-row class="d-none d-md-flex">
+  <v-row class="d-none d-lg-flex">
     <v-col cols="3">
       <v-btn text to="/">
         <h2>Hjem</h2>
