@@ -15,7 +15,6 @@ RUN npm run build
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine
 WORKDIR /app
 EXPOSE 8080
-EXPOSE 1337
 COPY --from=buildvue /app/dist /app/wwwroot
 COPY --from=build /app/src/Webshop/out /app
 CMD ["dotnet", "Webshop.dll"]
