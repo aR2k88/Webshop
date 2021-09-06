@@ -66,6 +66,8 @@ namespace Webshop
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors(MyAllowSpecificOrigins);
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             // app.UseEndpoints(endpoints =>
