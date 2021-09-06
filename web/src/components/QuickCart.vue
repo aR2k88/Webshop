@@ -2,7 +2,7 @@
     <v-menu offset-y :close-on-content-click="false">
       <template v-slot:activator="{ on }">
         <div class="text-center">
-        <v-btn v-on="on" fab dark color="primary" class="mt-2" small>
+        <v-btn v-on="on" fab dark color="primary" class="mt-2" x-small>
           <h3 class="white--text">{{getProductCountInCart}}</h3>
         </v-btn>
         </div>
