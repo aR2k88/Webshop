@@ -6,6 +6,7 @@
       <v-container>
         <router-view :key="$route.fullPath"></router-view>
       </v-container>
+      <Footer></Footer>
     </v-main>
   </v-app>
 
@@ -41,9 +42,10 @@
 </style>
 <script>
 import MainToolbar from "@/components/MainToolbar";
+import Footer from "@/components/Footer";
 
 export default {
-  components: {MainToolbar},
+  components: {MainToolbar, Footer},
   mounted() {
     this.$store.dispatch("fetchProducts");
     this.handleCart();
