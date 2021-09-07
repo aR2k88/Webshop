@@ -1,38 +1,79 @@
 ﻿<template>
-  <v-container fixed>
-  <v-footer
-      padless
-  >
-    <v-card
-        flat
-        tile
-        class="background text-center"
-    >
-      <v-card-text>
-        <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4 "
-            icon
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
-      </v-card-text>
-
-      <v-card-text class="pt-0">
-        Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-      </v-card-text>
-
-      <v-divider></v-divider>
-
-      <v-card-text class="">
-        {{ new Date().getFullYear() }} 
-      </v-card-text>
-    </v-card>
-  </v-footer>
-  </v-container>
+  <v-card flat>
+    <v-footer class="background font-weight-medium" padless>
+      <v-col class="text-left" cols="12">
+        <v-divider  class="black"></v-divider>
+      </v-col>
+      <v-flex xs12 sm6>
+        <v-list class="background" dense>
+          <v-list-item>
+            <span class="font-weight-bold">Info</span>
+          </v-list-item>
+          <v-list-item>
+            <span>Kontakt</span>
+          </v-list-item>
+          <v-list-item>
+            <span>Frakt & Levering</span>
+          </v-list-item>
+          <v-list-item>
+            <span>Ofte stilte spørsmål</span>
+          </v-list-item>
+          <v-list-item>
+            <span>Kjøpsbetingelser</span>
+          </v-list-item>
+        </v-list>
+        </v-flex>
+        <v-flex xs12 sm6>
+          <v-list class="background">
+            <v-list-item>
+              <span class="font-weight-bold">Sosiale Medier</span>
+            </v-list-item>
+            <v-list-item>
+              <v-icon color="black" large>mdi-facebook</v-icon>
+              <v-icon color="black" large>mdi-instagram</v-icon>
+            </v-list-item>
+            <v-list-item></v-list-item>
+            <v-list-item></v-list-item>
+            <v-list-item></v-list-item>
+          </v-list>
+        </v-flex>
+<!--      <v-col cols="7">-->
+<!--        <v-list class="background text-left">-->
+<!--          <v-list-item>-->
+<!--            <span class="font-weight-bold">Info</span>-->
+<!--          </v-list-item>-->
+<!--          <v-list-item>-->
+<!--            <span>Kontakt</span>-->
+<!--          </v-list-item>-->
+<!--          <v-list-item>-->
+<!--            <span>Frakt & Levering</span>-->
+<!--          </v-list-item>-->
+<!--          <v-list-item>-->
+<!--            <span>Ofte stilte spørsmål</span>-->
+<!--          </v-list-item>-->
+<!--          <v-list-item>-->
+<!--            <span>Kjøpsbetingelser</span>-->
+<!--          </v-list-item>-->
+<!--        </v-list>-->
+<!--      </v-col>-->
+<!--      <v-col cols="5">-->
+<!--        <v-list class="background">-->
+<!--          <v-list-item>-->
+<!--            <span class="font-weight-bold">Sosiale Medier</span>-->
+<!--          </v-list-item>-->
+<!--          <v-list-item>-->
+<!--            <v-icon color="black" large>mdi-facebook</v-icon>-->
+<!--            <v-icon color="black" large>mdi-instagram</v-icon>-->
+<!--          </v-list-item>-->
+<!--          <v-list-item></v-list-item>-->
+<!--          <v-list-item></v-list-item>-->
+<!--          <v-list-item></v-list-item>-->
+<!--          -->
+<!--        </v-list>-->
+<!--      </v-col>-->
+<!--      <v-col cols="4"></v-col>-->
+    </v-footer>
+  </v-card>
 </template>
 
 <script>

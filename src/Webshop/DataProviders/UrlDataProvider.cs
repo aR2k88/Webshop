@@ -13,6 +13,7 @@ namespace Webshop.DataProviders
         public Task<ProductUrl> Update(ProductUrl productUrl);
         public Task<ProductUrl> Delete(ProductUrl productUrl);
         public Task<ProductUrl> GetByProduct(Guid productId);
+        public Task<Guid> GetProductIdByProductUrl(string productUrl);
         public Task<IEnumerable<ProductUrl>> GetAllUrls();
     }
 
@@ -53,6 +54,13 @@ namespace Webshop.DataProviders
         public Task<ProductUrl> GetByProduct(Guid productId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Guid> GetProductIdByProductUrl(string productUrl)
+        {
+            var res = await _collection.FindAsync(x => x.Url == productUrl);
+            var result = await res.SingleOrDefaultAsync();
+            return result.ConnectedProduct;
         }
 
         public async Task<ProductUrl> GetByUrl(string url)

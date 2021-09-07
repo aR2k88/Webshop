@@ -7,8 +7,8 @@ namespace Webshop.Models
     public class ProductUrl
     {
         [BsonId]
-        [BsonRepresentation(BsonType.String)]
         public string Url { get; set; }
+        [BsonRepresentation(BsonType.String)]
         public Guid ConnectedProduct { get; set; }
 
         public ProductUrl(Guid productId, string productName)

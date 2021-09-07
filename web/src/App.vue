@@ -5,8 +5,12 @@
 <!--      <MainNavBar></MainNavBar>-->
       <v-container>
         <router-view :key="$route.fullPath"></router-view>
+        
       </v-container>
-      <Footer></Footer>
+      <v-container>
+        <Footer></Footer>
+      </v-container>
+      
     </v-main>
   </v-app>
 

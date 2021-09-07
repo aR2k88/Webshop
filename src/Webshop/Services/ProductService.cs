@@ -8,6 +8,16 @@ using Webshop.Models;
 
 namespace Webshop.Services
 {
+    public interface IProductService
+    {
+        public Task<Product> Create(Product product);
+        public Task<Product> Save(Product product);
+        public Task<Product> Delete(Product product);
+        public Task<Product> Get(Guid productId);
+        public Task<Product> GetByProductUrl(string category, string productUrl);
+        public Task<List<Product>> GetByCategory(string category);
+        public Task<List<Product>> GetAllProducts();
+    }
     public class ProductService : IProductService
     {
         private readonly IProductDataProvider _productDataProvider;
@@ -36,10 +46,16 @@ namespace Webshop.Services
             throw new NotImplementedException();
         }
 
-        public Task<Product> Get(Guid productId)
+        public async Task<Product> Get(Guid productId) => await _productDataProvider.Get(productId);
+        public async Task<Product> GetByProductUrl(string category, string productUrl)
         {
-            throw new NotImplementedException();
+            var gettingProductsInCategory = _productDataProvider.GetByCategory(category);
+            var productId = await _urlManagerService.GetProductIdFromProductUrl(productUrl);
+            var categoryProducts = await gettingProductsInCategory;
+            return categoryProducts != null ? categoryProducts.FirstOrDefault(x => x._id == productId) : null;
         }
+
+        public async Task<List<Product>> GetByCategory(string category) => await _productDataProvider.GetByCategory(category);
 
         public async Task<List<Product>> GetAllProducts()
         {

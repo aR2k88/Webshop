@@ -14,6 +14,7 @@ namespace Webshop.DataProviders
         public Task<Product> Update(Product product);
         public Task Delete(Product product);
         public Task<Product> Get(Guid productId);
+        public Task<List<Product>> GetByCategory(string category);
         public Task<IEnumerable<Product>> GetAllProducts();
         public Task<List<string>> GetProductCategories();
     }
@@ -53,6 +54,12 @@ namespace Webshop.DataProviders
         {
             var res = await _collection.FindAsync(x => x._id == productId);
             return res.FirstOrDefault();
+        }
+        
+        public async Task<List<Product>> GetByCategory(string category)
+        {
+            var res = await _collection.Find(x => x.Category.ToLower() == category.ToLower()).ToListAsync();
+            return res;
         }
 
         public async Task<IEnumerable<Product>> GetAllProducts()
