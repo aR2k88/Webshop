@@ -16,7 +16,7 @@ namespace Webshop.DataProviders
         public Task<Product> Get(Guid productId);
         public Task<List<Product>> GetByCategory(string category);
         public Task<IEnumerable<Product>> GetAllProducts();
-        public Task<List<string>> GetProductCategories();
+        public Task<List<string>> GetAllCategories();
     }
     public class ProductDataProvider : IProductDataProvider
     {
@@ -33,7 +33,7 @@ namespace Webshop.DataProviders
             return product;
         }
 
-        public async Task<List<string>> GetProductCategories()
+        public async Task<List<string>> GetAllCategories()
         {
             var res = await _collection.DistinctAsync(x => x.Category, new BsonDocument());
             return res.ToList();

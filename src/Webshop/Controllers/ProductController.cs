@@ -47,5 +47,11 @@ namespace Webshop.Controllers
             return result;
         }
 
+        [HttpGet]
+        [Route("categories")]
+        public async Task<List<string>> GetAllCategories()
+        {
+           return await _productService.GetAllCategories();
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace Webshop.Services
     {
         Task<ProductUrl> GenerateUrlForNewProduct(Product product);
         Task<Guid> GetProductIdFromProductUrl(string productUrl);
+        Task<string> GetUrlByProductId(Guid productId);
     }
     public class UrlManagerService : IUrlManagerService
     {
@@ -28,6 +29,12 @@ namespace Webshop.Services
         {
             var res = await _productUrlDataProvider.GetProductIdByProductUrl(productUrl);
             return res;
+        }
+
+        public async Task<string> GetUrlByProductId(Guid productId)
+        {
+            var res = await _productUrlDataProvider.GetByProduct(productId);
+            return res.Url;
         }
     }
 }

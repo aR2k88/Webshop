@@ -14,17 +14,33 @@
       <v-spacer class="d-none d-lg-flex"></v-spacer>
     </v-app-bar>
     <v-navigation-drawer
+        color="background"
+        class="text-left"
         v-model="drawer"
-        absolute
-        temporary>
+        app>
       <v-list
           nav
           dense>
-        <v-list-item-group>
-          <v-list-item v-for="(item, index) in items" :key="item">
-            <v-list-item-title @click="tab = index">{{ item }}</v-list-item-title>
+        <v-list-item to="/">
+          <v-list-item-title><span class="menuFont">Hjem</span></v-list-item-title>
+        </v-list-item>
+        <v-list-group>
+          <v-list-item slot="activator">
+              <v-list-item-title><span class="menuFont">Produkter</span></v-list-item-title>
           </v-list-item>
-        </v-list-item-group>
+          <v-list-item to="/Produkter">
+            <v-list-item-title><span class="menuFont ml-3">Se Alle</span></v-list-item-title>
+          </v-list-item>
+          <v-list-item v-for="subItem in allCategories" :key="subItem" @click="goToCategory(subItem)">
+            <span class="menuFont ml-3">{{subItem}}</span>
+          </v-list-item>
+        </v-list-group>
+        <v-list-item to="/Historie">
+          <v-list-item-title><span class="menuFont">Historie</span></v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/Kontakt">
+          <v-list-item-title><span class="menuFont">Kontakt oss</span></v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </v-container>
@@ -33,6 +49,7 @@
 <script>
 import QuickCart from "@/components/QuickCart";
 import MainNavBar from "@/components/MainNavBar";
+import axios from "axios";
 
 export default {
   name: "MainToolbar",
@@ -44,33 +61,47 @@ export default {
     return {
       tab: null,
       drawer: false,
+      allCategories: [],
       items: [
-        'Hjem', 'Produkter', 'Historie', 'Kontakt oss',
+        { 
+          text: "Hjem",
+          value: 0,
+          active: false,
+          items: this.allCategories},
+        { text: "Produkter", value: 1, active: false },
+        { text: "Historie", value: 2, active: false },
+        { text: "Kontakt oss", value: 3, active: false },
       ],
     }
   },
+  async mounted() {
+    axios.get(`api/product/categories`).then(response => {
+      this.allCategories = response.data;
+    })
+  },
   methods: {
-    screenSize() {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs':
-          return false
-        case 'sm':
-          return false
-        case 'md':
-          return false
-        default:
-          return true
-      }
+    goToCategory(category) {
+      this.$router.push(`/${category}`);
     }
+
   },
   computed: {
     cart() {
       return this.$store.state.CartModule.cart;
     },
+  },
+  watch: {
+    tab() {
+      console.log(this.tab)
+    }
   }
 }
 </script>
 
 <style scoped>
+
+.menuFont {
+  font-size: 20px;
+}
 
 </style>

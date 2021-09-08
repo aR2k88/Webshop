@@ -17,6 +17,7 @@ namespace Webshop.Services
         public Task<Product> GetByProductUrl(string category, string productUrl);
         public Task<List<Product>> GetByCategory(string category);
         public Task<List<Product>> GetAllProducts();
+        public Task<List<string>> GetAllCategories();
     }
     public class ProductService : IProductService
     {
@@ -61,6 +62,12 @@ namespace Webshop.Services
         {
             var result = await _productDataProvider.GetAllProducts();
             return result.ToList();
+        }
+
+        public async Task<List<string>> GetAllCategories()
+        {
+            var result = await _productDataProvider.GetAllCategories();
+            return result;
         }
         
         

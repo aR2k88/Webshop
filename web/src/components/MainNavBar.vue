@@ -6,17 +6,17 @@
       </v-btn>
     </v-col>
     <v-col cols="3" id="2">
-      <v-btn text>
+      <v-btn text to="/Produkter">
         <h2>Produkter</h2>
       </v-btn>
     </v-col>
     <v-col cols="3" id="3">
-      <v-btn text to="/About">
+      <v-btn text to="/Historie">
         <h2>Historie</h2>
       </v-btn>
     </v-col>
     <v-col cols="3" id="4">
-      <v-btn text>
+      <v-btn text to="/Kontakt">
         <h2>Kontakt oss</h2>
       </v-btn>
     </v-col>

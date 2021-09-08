@@ -51,9 +51,9 @@ namespace Webshop.DataProviders
             throw new NotImplementedException();
         }
 
-        public Task<ProductUrl> GetByProduct(Guid productId)
+        public async Task<ProductUrl> GetByProduct(Guid productId)
         {
-            throw new NotImplementedException();
+            return await _collection.Find(x => x.ConnectedProduct == productId).SingleOrDefaultAsync();
         }
 
         public async Task<Guid> GetProductIdByProductUrl(string productUrl)

@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-container color="secondary" flat @click="goToProduct(product._id)" max-width="90%" class="mt-6">
+  <v-container color="secondary" flat @click="goToProduct()" max-width="90%" class="mt-6">
     <v-layout>
     <v-img width="100%" src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
            ></v-img>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "ProductCard",
   props: ['product'],
@@ -36,8 +37,11 @@ export default {
       await this.$store.dispatch("addToCart", payload)
 
     },
-    goToProduct(item) {
-      console.log(item)
+    async goToProduct() {
+      axios.get(`api/url/${this.product._id}`).then(response => {
+        this.$router.push(`/${this.product.category}/${response.data}`)
+      })
+      
     }
   },
   computed: {
