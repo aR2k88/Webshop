@@ -1,6 +1,5 @@
 ﻿<template>
   <v-container color="background">
-    <!-- MOBILE -->
     <v-app-bar color="background" flat fixed>
       <v-app-bar-nav-icon class="d-flex d-lg-none" @click="drawer = true"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>

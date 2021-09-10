@@ -33,9 +33,6 @@ export default {
   },
   components: {},
   methods: {
-    changeTab(item) {
-      console.log(item)
-    }
   }
 }
 

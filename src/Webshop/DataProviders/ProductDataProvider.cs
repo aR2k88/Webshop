@@ -13,6 +13,7 @@ namespace Webshop.DataProviders
         public Task<Product> Create(Product product);
         public Task<Product> Update(Product product);
         public Task Delete(Product product);
+        public Task DeleteAll();
         public Task<Product> Get(Guid productId);
         public Task<List<Product>> GetByCategory(string category);
         public Task<IEnumerable<Product>> GetAllProducts();
@@ -31,6 +32,11 @@ namespace Webshop.DataProviders
         {
             await _collection.InsertOneAsync(product);
             return product;
+        }
+
+        public async Task DeleteAll()
+        {
+            await _collection.DeleteManyAsync(_ => true);
         }
 
         public async Task<List<string>> GetAllCategories()
