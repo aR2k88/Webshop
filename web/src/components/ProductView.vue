@@ -2,7 +2,7 @@
   <v-layout row :class="layoutClass">
     <v-flex xs12 sm12 md6 lg6>
       <v-img
-          src="/Image 2.png"
+          src="Image 2.png"
           :max-width="imageWidth"
           class="mx-auto"
       ></v-img>
@@ -16,7 +16,7 @@
           <h3> {{ currentProduct.price }} nok</h3>
         </div>
         <v-divider class="black"></v-divider>
-        <div class="mt-4">
+        <div class="mt-4 ml-2 mr-2">
       <span class="description">
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       </span>
@@ -72,7 +72,7 @@ export default {
 <style scoped>
 
 .description {
-  font-size:1.3rem;
+  font-size:1.1rem;
 }
 
 </style>
