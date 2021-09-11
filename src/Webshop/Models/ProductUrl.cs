@@ -14,7 +14,7 @@ namespace Webshop.Models
         public ProductUrl(Guid productId, string productName)
         {
             ConnectedProduct = productId;
-            Url = productName.Replace(' ', '-');
+            Url = productName.Replace(' ', '-').ToLower();
         }
     }
 }

@@ -2,7 +2,7 @@
   <v-layout row :class="layoutClass">
     <v-flex xs12 sm12 md6 lg6>
       <v-img
-          src="Image 2.png"
+          src="/images/image 2.png"
           :max-width="imageWidth"
           class="mx-auto"
       ></v-img>
