@@ -74,12 +74,12 @@ namespace Webshop
             }
             app.Use(async (context, next) =>
             {
-                await next();
-                if (context.Response.StatusCode == 404)
+                if (context?.Request != null && context.Request.Path.StartsWithSegments(new PathString("/api")) != true)
                 {
-                    context.Request.Path = "/";
-                    await next();
+                    context.Request.Path = "/Index.html";
                 }
+
+                await next();
             });
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
