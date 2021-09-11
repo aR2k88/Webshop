@@ -3,7 +3,7 @@
     <v-layout>
         <v-img width="100%" :src="mainImage" max-height="325px" min-height="325px"></v-img>
       </v-layout>
-    <v-layout class="ml-1 mr-1 mt-3" row>
+    <v-layout class="ml-1 mr-1 mt-3" row wrap>
       <v-flex xs12 class="text-left text-wrap text-break">
         <span class="text-align-last productName">{{ product.name }}</span>
       </v-flex>
