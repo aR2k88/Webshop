@@ -70,14 +70,14 @@ namespace Webshop
             {
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
-                app.UseExceptionHandler("/wwwroot/index.html");
+                app.UseExceptionHandler("/index.html");
             }
             app.Use(async (context, next) =>
             {
                 await next();
                 if (context.Response.StatusCode == 404)
                 {
-                    context.Request.Path = "/wwwroot";
+                    context.Request.Path = "/";
                     await next();
                 }
             });
