@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Webshop.DataProviders;
-using Webshop.Interfaces;
 using Webshop.Models;
 using Webshop.Services;
 
