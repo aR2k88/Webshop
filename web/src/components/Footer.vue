@@ -2,7 +2,6 @@
   <v-card flat>
     <v-footer class="background font-weight-medium" padless>
       <v-col class="text-left" cols="12">
-        <v-divider  class="black"></v-divider>
       </v-col>
       <v-flex xs12 sm6>
         <v-list class="background" dense>

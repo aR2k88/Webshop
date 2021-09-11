@@ -1,14 +1,14 @@
 ﻿<template>
   <v-layout row :class="layoutClass">
-    <v-flex xs12 sm12 md6 lg6>
+    <v-flex xs12 sm12 md6 lg6 class="mb-5">
       <v-img
           :src="mainImage"
           :max-width="imageWidth"
           class="mx-auto"
       ></v-img>
     </v-flex>
-    <v-flex xs12 sm12 md6 lg6 class="text-left">
-      <v-flex lg7>
+    <v-flex xs12 md6 class="text-left">
+      <v-flex lg7 class="ml-4 mr-4" v-bind:class="this.$vuetify.breakpoint.name === 'sm' ? 'ml-9 mr-9' : ''">
         <div>
           <h1>{{ currentProduct.name }}</h1>
         </div>
@@ -16,9 +16,13 @@
           <h3> {{ currentProduct.price }} nok</h3>
         </div>
         <v-divider class="black"></v-divider>
-        <div class="mt-4 ml-2 mr-2">
+        <div class="mt-4">
       <span class="description">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       </span>
         </div>
         <div>
@@ -37,6 +41,7 @@
 
 <script>
 import BuyButton from "@/components/Buttons/BuyButton";
+
 export default {
   name: "ProductView",
   components: {BuyButton},
@@ -46,11 +51,11 @@ export default {
       return this.$store.state.ProductModule.currentProduct;
     },
     mainImage() {
-      console.log('/images/products/'+ this.productUrl + '/1.png')
-      return '/images/products/'+ this.productUrl + '/1.png';
+      console.log('/images/products/' + this.productUrl + '/1.png')
+      return '/images/products/' + this.productUrl + '/1.png';
     },
     imageWidth() {
-      if (this.$vuetify.breakpoint.name === "xs" || this.$vuetify.breakpoint.name === "sm") return "100%"
+      if (this.$vuetify.breakpoint.name === "xs") return "100%"
       return "90%";
     }
   },
@@ -70,7 +75,7 @@ export default {
       }
     },
   },
-  
+
 }
 
 </script>
@@ -78,7 +83,7 @@ export default {
 <style scoped>
 
 .description {
-  font-size:1.1rem;
+  font-size: 1.1rem;
 }
 
 </style>

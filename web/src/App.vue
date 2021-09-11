@@ -3,7 +3,7 @@
     <v-main class="background">
       <MainToolbar id="nav"></MainToolbar>
 <!--      <MainNavBar></MainNavBar>-->
-      <v-container>
+      <v-container :class="navBarMargin">
         <router-view :key="$route.fullPath"></router-view>
         
       </v-container>
@@ -61,6 +61,18 @@ export default {
         this.$store.dispatch("fetchCart", cartId)
       }
     }
+  },
+  computed: {
+    navBarMargin() {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'lg':
+          return "mt-10"
+        case 'xl':
+          return "mt-10"
+        default:
+          return ""
+      }
+    },
   }
 }
 </script>
