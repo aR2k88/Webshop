@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     goToCategory(category) {
-      this.$router.push(`/${category}`);
+      this.$router.push(`/Produkter?kategori=${category}`);
     }
 
   },

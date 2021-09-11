@@ -17,6 +17,11 @@ export default {
       currentFilter: '',
     }
   },
+  mounted() {
+    let urlCategory = this.$route.query.kategori;
+    if(urlCategory !== undefined) this.currentFilter = urlCategory.toLowerCase();
+
+  },
   methods: {
     filterCategory(cat) {
       if (this.currentFilter === cat) this.currentFilter = ''
@@ -30,7 +35,7 @@ export default {
     },
     filteredProducts() {
       if(this.currentFilter === '') return this.$store.state.ProductModule.products;
-      return this.$store.state.ProductModule.products.filter(x => x.category === this.currentFilter);
+      return this.$store.state.ProductModule.products.filter(x => x.category.toLowerCase() === this.currentFilter.toLowerCase());
     }
   }
 }
