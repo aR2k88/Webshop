@@ -70,7 +70,7 @@ namespace Webshop
             {
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
-                app.UseExceptionHandler("/index.html");
+                app.UseExceptionHandler("/wwwroot/index.html");
             }
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
