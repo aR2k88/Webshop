@@ -72,6 +72,15 @@ namespace Webshop
                 app.UseStaticFiles();
                 app.UseExceptionHandler("/wwwroot/index.html");
             }
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/wwwroot";
+                    await next();
+                }
+            });
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
