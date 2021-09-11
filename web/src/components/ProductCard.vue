@@ -1,19 +1,20 @@
 ﻿<template>
   <v-container color="secondary" flat @click="goToProduct()" max-width="90%" class="mt-6">
     <v-layout>
-      <v-img width="100%" :src="mainImage" max-height="325px" min-height="325px"></v-img>
-    </v-layout>
-    <v-layout class="ml-1 mt-3 mr-1">
-      <v-flex class="text-left text-wrap text-break">
+        <v-img width="100%" :src="mainImage" max-height="325px" min-height="325px"></v-img>
+      </v-layout>
+    <v-layout class="ml-1 mr-1 mt-3" row>
+      <v-flex xs12 class="text-left text-wrap text-break">
         <span class="text-align-last productName">{{ product.name }}</span>
       </v-flex>
-    </v-layout>
-    <v-layout row class="ml-1 mr-1 mt-1">
-      <v-flex>
+      <v-flex xs12>
         <span class="float-left">{{ product.price }} nok</span>
       </v-flex>
-      <v-flex>
-        <v-btn color="primary" @click="clickBuy(product)" class="float-end">Kjøp</v-btn>
+      <v-flex xs12 class="text-left text-wrap text-break mt-2">
+        <span class="float-left">{{product.shortDescription}}</span>
+      </v-flex>
+      <v-flex xs12 class="mt-2">
+        <v-btn color="primary" @click="clickBuy(product)" class="float-left text-none">Legg i handlekurven</v-btn>
       </v-flex>
     </v-layout>
   </v-container>

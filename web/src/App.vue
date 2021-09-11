@@ -3,14 +3,12 @@
     <v-main class="background">
       <MainToolbar id="nav"></MainToolbar>
 <!--      <MainNavBar></MainNavBar>-->
-      <v-container :class="navBarMargin">
+      <v-container fluid :class="navBarMargin">
         <router-view :key="$route.fullPath"></router-view>
-        
       </v-container>
       <v-container>
         <Footer></Footer>
       </v-container>
-      
     </v-main>
   </v-app>
 
@@ -25,6 +23,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: auto;
+  max-width: 1440px;
+  background: #F0EFED;
 
   h1, h2, h3, h4 {
     color: #53524E;
@@ -33,7 +34,7 @@
 
 #nav {
   padding: 30px;
-
+  max-width:1440px;
   a {
     font-weight: bold;
     color: #2c3e50;

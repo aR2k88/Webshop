@@ -22,6 +22,7 @@ namespace Webshop.Controllers
             product1.Name = "Test Produkt 1";
             product1.Price = 299;
             product1.Category = "Fat";
+            product1.ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
             product1.Description =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
                 "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
@@ -30,6 +31,7 @@ namespace Webshop.Controllers
             product2.Name = "Test Produkt 2";
             product2.Price = 499;
             product2.Category = "Vase";
+            product2.ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
             product2.Description =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
                 "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
@@ -38,6 +40,7 @@ namespace Webshop.Controllers
             product3.Name = "Test Produkt 3";
             product3.Price = 349;
             product3.Category = "Fat";
+            product3.ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
             product3.Description =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
                 "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
@@ -46,6 +49,7 @@ namespace Webshop.Controllers
             product4.Name = "Test Produkt 4";
             product4.Price = 349;
             product4.Category = "Fat";
+            product4.ShortDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
             product4.Description =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt " +
                 "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " +
