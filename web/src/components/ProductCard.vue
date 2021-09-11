@@ -14,7 +14,7 @@
         <span class="float-left">{{product.shortDescription}}</span>
       </v-flex>
       <v-flex xs12 class="mt-2">
-        <v-btn color="primary" @click="clickBuy(product)" class="float-left text-none">Legg i handlekurven</v-btn>
+        <v-btn color="primary" @click.stop="clickBuy(product)" class="float-left text-none">Legg i handlekurven</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
