@@ -76,7 +76,7 @@ namespace Webshop
             {
                 if (context?.Request != null && context.Request.Path.StartsWithSegments(new PathString("/api")) != true)
                 {
-                    context.Request.Path = "/Index.html";
+                    context.Request.Path = "/index.html";
                 }
 
                 await next();
@@ -88,6 +88,7 @@ namespace Webshop
             // {
             //     endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
             // });
+            app.UseStaticFiles();
         }
     }
 }
