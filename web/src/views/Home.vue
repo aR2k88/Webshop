@@ -3,6 +3,15 @@
     <v-flex xs12>
       <MainBanner></MainBanner>
     </v-flex>
+    <v-flex xs12 class="background pt-10 pb-10">
+      <div>
+        <h3>En liten intro her</h3>
+      </div>
+      <div>Random tekst her</div>
+      <div class="mt-6">
+        <v-btn color="tertiary" class="text-none" depressed  >Les mer</v-btn>
+      </div>
+    </v-flex>
     <v-flex xs12 class="pt-6">
       <div><span class="textStyle">Denne månedes favoritter</span></div>
     </v-flex>
@@ -16,15 +25,6 @@
     <v-flex sm6 md4 lg3 v-for="product in products" :key="product._id">
       <product-card :product="product" v-if="!mobileDevice"></product-card>
     </v-flex>
-<!--    <v-flex v-if="!mobileDevice">-->
-<!--      <ProductCard :product="products[0]"></ProductCard>-->
-<!--    </v-flex>-->
-<!--    <v-flex v-if="!mobileDevice">-->
-<!--      <ProductCard :product="products[1]"></ProductCard>-->
-<!--    </v-flex>-->
-<!--    <v-flex v-if="!mobileDevice">-->
-<!--      <ProductCard :product="products[2]"></ProductCard>-->
-<!--    </v-flex>-->
   </v-layout>
 </template>
 

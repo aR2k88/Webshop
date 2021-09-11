@@ -1,6 +1,6 @@
 ﻿<template>
 
-  <v-layout row class="bck pb-8">
+  <v-layout row wrap class="bck pb-8">
     <v-flex xs12 class="mt-8">
       <div><span class="textStyle">Denne månedes favoritter</span></div>
     </v-flex>
