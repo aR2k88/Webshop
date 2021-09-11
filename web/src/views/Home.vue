@@ -1,5 +1,5 @@
 <template>
-  <v-layout row class="bck pb-5">
+  <v-layout row wrap class="bck pb-5">
     <v-flex xs12>
       <MainBanner></MainBanner>
     </v-flex>
