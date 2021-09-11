@@ -13,7 +13,7 @@
         </v-carousel-item>
       </v-carousel>
     </v-flex>
-    <v-flex  sm6 md4 lg3 v-for="product in products" :key="product._id">
+    <v-flex sm6 md4 lg3 v-for="product in products" :key="product._id">
       <product-card :product="product" v-if="!mobileDevice"></product-card>
     </v-flex>
 <!--    <v-flex v-if="!mobileDevice">-->
