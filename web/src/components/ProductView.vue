@@ -2,7 +2,7 @@
   <v-layout row :class="layoutClass">
     <v-flex xs12 sm12 md6 lg6>
       <v-img
-          src="/images/image 2.png"
+          :src="mainImage"
           :max-width="imageWidth"
           class="mx-auto"
       ></v-img>
@@ -40,9 +40,14 @@ import BuyButton from "@/components/Buttons/BuyButton";
 export default {
   name: "ProductView",
   components: {BuyButton},
+  props: ['productUrl'],
   computed: {
     currentProduct() {
       return this.$store.state.ProductModule.currentProduct;
+    },
+    mainImage() {
+      console.log('/images/products/'+ this.productUrl + '/1.png')
+      return '/images/products/'+ this.productUrl + '/1.png';
     },
     imageWidth() {
       if (this.$vuetify.breakpoint.name === "xs" || this.$vuetify.breakpoint.name === "sm") return "100%"
@@ -64,7 +69,8 @@ export default {
           return ""
       }
     },
-  }
+  },
+  
 }
 
 </script>

@@ -1,5 +1,5 @@
 ﻿<template>
-  <ProductView></ProductView>
+  <ProductView :productUrl="productUrl"></ProductView>
 </template>
 <script>
 import ProductView from "@/components/ProductView";
@@ -8,22 +8,20 @@ export default {
   components: {ProductView},
   data: function () {
     return {
+      productUrl: '',
     }
   },
   methods: {},
   async mounted() {
     let category = this.$route.params.category;
-    let productUrl = this.$route.params.productUrl;
+    this.productUrl = this.$route.params.productUrl;
     let payload = {
       category: category,
-      productUrl: productUrl
+      productUrl: this.productUrl
     }
     await this.$store.dispatch("fetchProductByUrl", payload)
   },
   computed: {
-    currentProduct(){
-      return this.$store.state.ProductModule.currentProduct;
-    }
   }
 }
 </script>

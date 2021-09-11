@@ -1,11 +1,11 @@
 ﻿<template>
-  <v-btn color="primary" :class="btnClass" @click="clickBuy(product)" large>{{ btnText }}</v-btn>
+  <v-btn color="primary" :class="getBtnClass" @click="clickBuy(product)" large>{{ btnText }}</v-btn>
 </template>
 
 <script>
 export default {
   name: "BuyButton",
-  props: ['product', 'btnText', 'class', 'btnSize'],
+  props: ['product', 'btnText', 'btnClass', 'btnSize'],
   methods: {
     async clickBuy(product) {
       let payload = {
@@ -16,8 +16,8 @@ export default {
     },
   },
   computed: {
-    btnClass() {
-      return this.class;
+    getBtnClass() {
+      return this.btnClass;
     }
   }
 }

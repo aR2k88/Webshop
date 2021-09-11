@@ -11,7 +11,6 @@ export default {
             state.products = products;
         },
         setCurrentProduct(state, product){
-            console.log(product)
             state.currentProduct = product;
         }
     },

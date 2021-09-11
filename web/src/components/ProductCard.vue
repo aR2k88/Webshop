@@ -53,10 +53,7 @@ export default {
       return this.$store.state.CartModule.cart;
     },
     mainImage() {
-      let test = '/images/products/' + this.productUrl + '/1.png';
-      console.log(test)
       return '/images/products/'+ this.productUrl + '/1.png';
-
     }
   }
 }
