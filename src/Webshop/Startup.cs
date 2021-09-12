@@ -92,7 +92,6 @@ namespace Webshop
             {
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
-                app.UseExceptionHandler("/index.html");
             }
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
@@ -108,10 +107,11 @@ namespace Webshop
                 if (context?.Request != null && context.Request.Path.StartsWithSegments(new PathString("/api")) != true)
                 {
                     context.Request.Path = "/index.html";
+                    Console.WriteLine("Her er vi");
                 }
                 await next();
             });
-            
+            app.UseStaticFiles();
         }
     }
 }

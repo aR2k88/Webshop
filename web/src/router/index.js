@@ -4,6 +4,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  { path: "*",
+    redirect: "/"
+  },
   {
     path: '/',
     name: 'Hjem',
@@ -59,10 +62,6 @@ const routes = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/Login.vue')
   },
-  { path: "/*", 
-    name: "NotFound",
-    component: () => import(/* webpackChunkName: "about" */ '../views/PageNotFound.vue')
-  }
 ]
 
 const router = new VueRouter({
