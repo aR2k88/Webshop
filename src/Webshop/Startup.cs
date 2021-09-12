@@ -105,10 +105,10 @@ namespace Webshop
                 }
                 await next();
             });
-            app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/admin"), appBuilder =>
-            {
-                appBuilder.UseMiddleware<JwtTokenMiddleware>();
-            });
+            // app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/admin"), appBuilder =>
+            // {
+            //     appBuilder.UseMiddleware<JwtTokenMiddleware>();
+            // });
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             
         }
