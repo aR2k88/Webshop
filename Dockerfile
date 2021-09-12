@@ -5,7 +5,7 @@ COPY . ./
 WORKDIR /app/src/Webshop
 RUN dotnet publish -c Release -o out
 
-FROM node:latest AS buildvue
+FROM node:15-alpine AS buildvue
 WORKDIR /app
 COPY web/package*.json ./
 RUN npm install
