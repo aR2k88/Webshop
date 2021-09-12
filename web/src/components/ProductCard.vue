@@ -46,7 +46,7 @@ export default {
       await this.$store.dispatch("addToCart", payload)
     },
     goToProduct() {
-        this.$router.push(`/${this.product.category}/${this.productUrl}`)
+        this.$router.push(`Produkter/${this.product.category}/${this.productUrl}`)
     },
   },
   computed: {

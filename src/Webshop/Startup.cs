@@ -91,13 +91,13 @@ namespace Webshop
             {
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
-                app.UseExceptionHandler("/index.html");
+                app.UseExceptionHandler("index.html");
             }
             app.Use(async (context, next) =>
             {
                 if (context?.Request != null && context.Request.Path.StartsWithSegments(new PathString("/api")) != true)
                 {
-                    context.Request.Path = "/index.html";
+                    context.Request.Path = "index.html";
                 }
 
                 await next();
@@ -108,8 +108,6 @@ namespace Webshop
                 {
                     appBuilder.UseMiddleware<JwtTokenMiddleware>();
                 });
-            
-            app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             
         }
