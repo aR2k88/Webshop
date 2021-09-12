@@ -26,7 +26,6 @@ namespace Webshop.Controllers
         public async Task<IActionResult> Login([FromBody] LoginModel login)
         {
             IActionResult response = Unauthorized();
-            await _userDataProvider.CreateUser();
             var user = await _userDataProvider.VerifyUser(login.Username, login.Password);
             if (user == null) return response;
             var tokenString = GenerateJSONWebToken(login);
