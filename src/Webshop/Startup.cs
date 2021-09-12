@@ -1,5 +1,6 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -95,6 +96,7 @@ namespace Webshop
             }
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
+            
             app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/admin"), appBuilder =>
                 {
                     appBuilder.UseMiddleware<JwtTokenMiddleware>();
@@ -107,6 +109,11 @@ namespace Webshop
                 }
 
                 await next();
+            });
+            app.Run(async (context) =>
+            {
+                context.Response.ContentType = "text/html";
+                await context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
             });
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             
