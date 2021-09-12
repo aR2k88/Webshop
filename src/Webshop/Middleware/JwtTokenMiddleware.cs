@@ -25,54 +25,55 @@ namespace Webshop.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            try
+            if (context.Request.Path.StartsWithSegments("/api/admin"))
             {
-                var authenticationCookieName = "access_token";
-                var token = context.Request.Cookies[authenticationCookieName];
-                if (token != null)
+                try
                 {
-                    // Validation 1 - Validation JWT token format
-                    var tokenInVerification =
-                        _jwtSecurityTokenHandler.ValidateToken(token, new TokenValidationParameters
-                        {
-                            ValidateIssuer = true,
-                            ValidateAudience = true,
-                            ValidateLifetime = true,
-                            ValidateIssuerSigningKey = true,
-                            ValidIssuer = _settings.JwtConfig.Issuer,
-                            ValidAudience = _settings.JwtConfig.Issuer,
-                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.JwtConfig.Secret))
-                        }, out var validatedToken);
-
-                    if (validatedToken is JwtSecurityToken jwtSecurityToken)
+                    var authenticationCookieName = "access_token";
+                    var token = context.Request.Cookies[authenticationCookieName];
+                    if (token != null)
                     {
-                        var result = jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
-                            StringComparison.InvariantCultureIgnoreCase);
-                        
-                        if (result && validatedToken.ValidTo > DateTime.UtcNow)
+                        // Validation 1 - Validation JWT token format
+                        var tokenInVerification =
+                            _jwtSecurityTokenHandler.ValidateToken(token, new TokenValidationParameters
+                            {
+                                ValidateIssuer = true,
+                                ValidateAudience = true,
+                                ValidateLifetime = true,
+                                ValidateIssuerSigningKey = true,
+                                ValidIssuer = _settings.JwtConfig.Issuer,
+                                ValidAudience = _settings.JwtConfig.Issuer,
+                                IssuerSigningKey =
+                                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.JwtConfig.Secret))
+                            }, out var validatedToken);
+
+                        if (validatedToken is JwtSecurityToken jwtSecurityToken)
                         {
-                            await _next(context);
-                        }
-                        else
-                        {
-                            await HandleException(context);
+                            var result = jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
+                                StringComparison.InvariantCultureIgnoreCase);
+
+                            if (result && validatedToken.ValidTo > DateTime.UtcNow)
+                            {
+                                await _next(context);
+                            }
+                            else
+                            {
+                                await HandleException(context);
+                            }
                         }
                     }
+                    else
+                    {
+                        await HandleException(context);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
                     await HandleException(context);
                 }
             }
-            catch (Exception ex)
-            {
-                Error Invalid = new Error()
-                {
-                    Success = false,
-                    Errors = "Token does not match or may expired."
-                };
-                context.Items["Error"] = Invalid; // userService.GetById(userId);
-            }
+
+            await _next(context);
         }
 
         private static Task HandleException(HttpContext context)
@@ -84,7 +85,7 @@ namespace Webshop.Middleware
             string result = JsonConvert.SerializeObject(new Error {Errors = "Not Authorized ", Success = false});
 
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
+            context.Response.StatusCode = (int) code;
 
             return context.Response.WriteAsync(result);
         }

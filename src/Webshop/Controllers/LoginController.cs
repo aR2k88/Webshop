@@ -39,7 +39,7 @@ namespace Webshop.Controllers
             var token = new JwtSecurityToken(_settings.JwtConfig.Issuer,
                 _settings.JwtConfig.Issuer,
                 null,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.Now.AddMinutes(120),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
