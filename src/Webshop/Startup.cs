@@ -97,6 +97,12 @@ namespace Webshop
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
             
+            //
+            // app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/admin"), appBuilder =>
+            // {
+            //     appBuilder.UseMiddleware<JwtTokenMiddleware>();
+            // });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             app.Use(async (context, next) =>
             {
                 if (context?.Request != null && context.Request.Path.StartsWithSegments(new PathString("/api")) != true)
@@ -105,11 +111,6 @@ namespace Webshop
                 }
                 await next();
             });
-            // app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/admin"), appBuilder =>
-            // {
-            //     appBuilder.UseMiddleware<JwtTokenMiddleware>();
-            // });
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             
         }
     }
