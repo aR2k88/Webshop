@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:latest AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 WORKDIR /app
 COPY . ./
 WORKDIR /app/src/Webshop
@@ -12,7 +12,7 @@ RUN npm install
 COPY web .
 RUN npm run build
 
-FROM mcr.microsoft.com/dotnet/aspnet:latest
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine
 WORKDIR /app
 EXPOSE 8080
 COPY --from=buildvue /app/dist /app/wwwroot
