@@ -91,23 +91,23 @@ namespace Webshop
             {
                 app.UseDefaultFiles();
                 app.UseStaticFiles();
-                app.UseExceptionHandler("index.html");
+                app.UseExceptionHandler("/index.html");
             }
-            app.Use(async (context, next) =>
-            {
-                if (context?.Request != null && context.Request.Path.StartsWithSegments(new PathString("/api")) != true)
-                {
-                    context.Request.Path = "index.html";
-                }
-
-                await next();
-            });
             app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
             app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/admin"), appBuilder =>
                 {
                     appBuilder.UseMiddleware<JwtTokenMiddleware>();
                 });
+            app.Use(async (context, next) =>
+            {
+                if (context?.Request != null && context.Request.Path.StartsWithSegments(new PathString("/api")) != true)
+                {
+                    context.Request.Path = "/index.html";
+                }
+
+                await next();
+            });
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             
         }
