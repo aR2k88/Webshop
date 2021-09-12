@@ -41,18 +41,23 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Checkout.vue')
   },
-  {
-    path: '/:category/:productUrl',
-    name: 'Produkt',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Product.vue')
-  },
+  // {
+  //   path: '/:category/:productUrl',
+  //   name: 'Produkt',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Product.vue')
+  // },
   {
     path: '/Admin',
     name: 'Admin',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/Dashboard.vue')
+  },
+  {
+    path: '/Admin/Login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/Login.vue')
   },
   { path: "/*", 
     name: "NotFound",

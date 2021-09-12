@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -14,5 +15,6 @@ namespace Webshop.Models
         public string Category { get; set; }
         public string ShortDescription { get; set; }
         public string Description { get; set; }
+        public List<string> Tags { get; set; }
     }
 }

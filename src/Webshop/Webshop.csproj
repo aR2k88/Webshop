@@ -5,9 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="BasicJwtService" Version="1.0.1" />
       <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
       <PackageReference Include="MongoDB.Bson" Version="2.13.1" />
       <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="Serilog" Version="2.11.0-dev-01367" />
       <PackageReference Include="Serilog.AspNetCore" Version="4.1.1-dev-00229" />
       <PackageReference Include="Serilog.Settings.Configuration" Version="3.2.1-dev-00288" />
