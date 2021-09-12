@@ -81,7 +81,7 @@ namespace Webshop.Middleware
 
             // Specify different custom exceptions here
 
-            string result = JsonConvert.SerializeObject(new Error {Errors = "Not Authorized", Success = false});
+            string result = JsonConvert.SerializeObject(new Error {Errors = "Not Authorized ", Success = false});
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;

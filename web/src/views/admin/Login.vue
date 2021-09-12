@@ -23,7 +23,7 @@ export default {
         Password: this.password
       }
       axios.post(`/api/login`, payload).then(response => {
-        this.$cookie.set('access_token', response.data.token)
+        this.$cookie.set('access_token', response.data.token, {httpOnly: true})
       })
     }
   }
