@@ -14,7 +14,7 @@ namespace Webshop.Services
         public Task<Product> Save(Product product);
         public Task<Product> Delete(Product product);
         public Task<Product> Get(Guid productId);
-        public Task<Product> GetByProductUrl(string category, string productUrl);
+        public Task<Product> GetByProductUrl(string productUrl);
         public Task<List<Product>> GetByCategory(string category);
         public Task<List<Product>> GetAllProducts();
         public Task<List<string>> GetAllCategories();
@@ -22,18 +22,15 @@ namespace Webshop.Services
     public class ProductService : IProductService
     {
         private readonly IProductDataProvider _productDataProvider;
-        private readonly IUrlManagerService _urlManagerService;
 
-        public ProductService(IProductDataProvider productDataProvider, IUrlManagerService urlManagerService)
+        public ProductService(IProductDataProvider productDataProvider)
         {
             _productDataProvider = productDataProvider;
-            _urlManagerService = urlManagerService;
         }
 
         public async Task<Product> Create(Product product)
         {
             var newProduct = await _productDataProvider.Create(product);
-            await _urlManagerService.GenerateUrlForNewProduct(newProduct);
             return newProduct;
         }
 
@@ -48,12 +45,9 @@ namespace Webshop.Services
         }
 
         public async Task<Product> Get(Guid productId) => await _productDataProvider.Get(productId);
-        public async Task<Product> GetByProductUrl(string category, string productUrl)
+        public async Task<Product> GetByProductUrl(string productUrl)
         {
-            var gettingProductsInCategory = _productDataProvider.GetByCategory(category);
-            var productId = await _urlManagerService.GetProductIdFromProductUrl(productUrl);
-            var categoryProducts = await gettingProductsInCategory;
-            return categoryProducts != null ? categoryProducts.FirstOrDefault(x => x._id == productId) : null;
+            return await _productDataProvider.GetByUrl(productUrl);
         }
 
         public async Task<List<Product>> GetByCategory(string category) => await _productDataProvider.GetByCategory(category);

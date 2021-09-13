@@ -21,21 +21,15 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "ProductCard",
   props: ['product'],
   data: function () {
     return {
-      productUrl: '',
     }
   },
 
   mounted() {
-    axios.get(`api/url/${this.product._id}`).then(response => {
-      this.productUrl = response.data
-    })
   },
   methods: {
     async clickBuy(product) {
@@ -46,7 +40,7 @@ export default {
       await this.$store.dispatch("addToCart", payload)
     },
     goToProduct() {
-        this.$router.push(`Produkter/${this.product.category}/${this.productUrl}`)
+        this.$router.push(`Produkter/${this.product.category}/${this.product.url}`)
     },
   },
   computed: {
@@ -54,7 +48,7 @@ export default {
       return this.$store.state.CartModule.cart;
     },
     mainImage() {
-      return '/images/products/'+ this.productUrl + '/1.png';
+      return '/images/products/'+ this.product.url + '/1.png';
     }
   }
 }

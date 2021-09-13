@@ -33,10 +33,10 @@ namespace Webshop.Controllers
         }
 
         [HttpGet]
-        [Route("category/{category}/{productUrl}")]
-        public async Task<Product> GetByProductUrl(string category, string productUrl)
+        [Route("url/{productUrl}")]
+        public async Task<Product> GetByProductUrl(string productUrl)
         {
-            var result = await _productService.GetByProductUrl(category, productUrl);
+            var result = await _productService.GetByProductUrl(productUrl);
             return result;
         }
         [HttpGet]

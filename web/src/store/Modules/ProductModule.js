@@ -21,7 +21,7 @@ export default {
          });
         },
         async fetchProductByUrl(state, payload){
-            axios.get(`api/product/category/${payload.category}/${payload.productUrl}`).then(response => {
+            axios.get(`api/product/url/${payload.productUrl}`).then(response => {
                 state.commit("setCurrentProduct", response.data)
             });
         },

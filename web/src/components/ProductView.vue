@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-layout row :class="layoutClass">
+  <v-layout row wrap :class="layoutClass">
     <v-flex xs12 sm12 md6 lg6 class="mb-5">
       <v-img
           :src="mainImage"

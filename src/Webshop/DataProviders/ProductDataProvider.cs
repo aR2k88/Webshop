@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -14,8 +15,9 @@ namespace Webshop.DataProviders
         public Task<Product> Update(Product product);
         public Task Delete(Product product);
         public Task<Product> Get(Guid productId);
+        public Task<Product> GetByUrl(string url);
         public Task<List<Product>> GetByCategory(string category);
-        public Task<IEnumerable<Product>> GetAllProducts();
+        public Task<List<Product>> GetAllProducts();
         public Task<List<string>> GetAllCategories();
     }
     public class ProductDataProvider : IProductDataProvider
@@ -29,6 +31,7 @@ namespace Webshop.DataProviders
 
         public async Task<Product> Create(Product product)
         {
+            product.Url = await GenerateUniqueName(product.Name);
             await _collection.InsertOneAsync(product);
             return product;
         }
@@ -55,6 +58,12 @@ namespace Webshop.DataProviders
             var res = await _collection.FindAsync(x => x._id == productId);
             return res.FirstOrDefault();
         }
+
+        public async Task<Product> GetByUrl(string url)
+        {
+            var res = await _collection.FindAsync(x => x.Url == url);
+            return res.FirstOrDefault();
+        }
         
         public async Task<List<Product>> GetByCategory(string category)
         {
@@ -62,9 +71,18 @@ namespace Webshop.DataProviders
             return res;
         }
 
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<List<Product>> GetAllProducts()
         {
-            return await _collection.Find(_ => true).ToListAsync();
+            var res = await _collection.FindAsync(_ => true);
+            return res.ToList();
+        }
+        private async Task<string> GenerateUniqueName(string productName)
+        {
+            var name = productName.Replace(' ', '-').ToLower();
+            var data = await GetAllProducts();
+            var allMatchingUrls = data.Where(x => x.Url.StartsWith(name));
+            if (!allMatchingUrls.Any()) return name;
+            return name + "-" + (allMatchingUrls.Count() + 1);
         }
     }
 }

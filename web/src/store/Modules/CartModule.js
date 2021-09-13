@@ -13,6 +13,15 @@ export default {
                 count += x.quantity
             })
             return count;
+        },
+        GetSubTotalInCart(state) {
+            if(state.cart.cartItems === undefined) return 0;
+            if(state.cart.cartItems.length < 1) return 0;
+            let sum = 0;
+            state.cart.cartItems.forEach(x => {
+                sum += x.product.price * x.quantity
+            })
+            return sum;
         }
     },
     mutations: {
