@@ -32,9 +32,9 @@ namespace Webshop.Controllers
 
         [HttpPost]
         [Route("remove")]
-        public async Task<Cart> RemoveFromCart(Guid cartId, [FromBody] Product product)
+        public async Task<Cart> RemoveFromCart([FromBody] NewCartItem cartItem)
         {
-            return await _cartService.RemoveFromCart(cartId, product);
+            return await _cartService.RemoveFromCart(cartItem.CartId, cartItem.Product);
         }
 
         public class NewCartItem

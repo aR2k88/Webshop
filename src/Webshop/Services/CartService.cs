@@ -39,16 +39,14 @@ namespace Webshop.Services
                 cart = await _cartDataProvider.Get(cartId);
             }
 
-            var existingItem = cart.CartItems.SingleOrDefault(x => x.Product._id == product._id);
-            if (existingItem == null)
+            var existingItemIndex = cart.CartItems.FindIndex(x => x.Product._id == product._id);
+            if (existingItemIndex == -1)
             {
                 cart.CartItems.Add(new CartItem(product, amount));
             }
             else
             {
-                cart.CartItems.Remove(existingItem);
-                existingItem.Quantity += amount;
-                cart.CartItems.Add(existingItem);
+                cart.CartItems[existingItemIndex].Quantity += amount;
             }
             
             return await _cartDataProvider.Save(cart);
@@ -57,12 +55,11 @@ namespace Webshop.Services
         public async Task<Cart> RemoveFromCart(Guid cartId, Product product, int amount = 1)
         {
             var cart = await _cartDataProvider.Get(cartId);
-            var existingItem = cart.CartItems.SingleOrDefault(x => x.Product._id == product._id);
-            if (existingItem == null) return cart;
-            cart.CartItems.Remove(existingItem);
-            existingItem.Quantity -= 1;
-            if (existingItem.Quantity < 0) existingItem.Quantity = 0;
-            cart.CartItems.Add(existingItem);
+            var existingItemIndex = cart.CartItems.FindIndex(x => x.Product._id == product._id);
+            if (existingItemIndex == -1) return cart;
+            cart.CartItems[existingItemIndex].Quantity -= amount;
+            if (cart.CartItems[existingItemIndex].Quantity < 1)
+                cart.CartItems.Remove(cart.CartItems[existingItemIndex]);
             return await _cartDataProvider.Save(cart);
         }
 

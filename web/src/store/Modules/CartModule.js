@@ -40,6 +40,16 @@ export default {
                state.commit("updateCart", response.data)
            })
        },
+        async removeFromCart(state, payload) {
+           let cartItem = {
+               CartId: payload.cartId,
+               Product: payload.product
+           }
+           console.log(cartItem)
+           axios.post(`api/cart/remove`, cartItem).then(response => {
+               state.commit("updateCart", response.data)
+           })
+        },
         fetchCart(state, cartId) {
             axios.get(`api/cart/${cartId}`).then(response => {
                 state.commit("updateCart", response.data)
