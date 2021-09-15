@@ -14,14 +14,10 @@
                   <span class="float-left">{{ cartItem.product.name }}</span>
                 </v-flex>
                 <v-flex xs12><span class="float-right">{{ cartItem.product.price }} nok</span></v-flex>
-                <v-flex xs12>
-                  <v-btn x-small fab class="mr-3" @click="removeProduct(cartItem.product)">
-                    <v-icon>mdi-minus-circle-outline</v-icon>
-                  </v-btn>
-                  <span>{{cartItem.quantity}}</span>
-                  <v-btn x-small fab class="ml-3 mx-2" @click="addProduct(cartItem.product)">
-                    <v-icon>mdi-plus-circle-outline</v-icon>
-                  </v-btn>
+                <v-flex xs12 class="text-left">
+                    <v-icon @click="removeProduct(cartItem.product)">mdi-minus-circle-outline</v-icon>
+                  <span class="ml-2">{{cartItem.quantity}}</span>
+                    <v-icon class="ml-2" @click="addProduct(cartItem.product)">mdi-plus-circle-outline</v-icon>
                 </v-flex>
               </v-flex>
             </v-layout>
