@@ -13,7 +13,7 @@
                 <v-flex xs12>
                   <span class="float-left">{{ cartItem.product.name }}</span>
                 </v-flex>
-                <v-flex xs12><span class="float-right">{{ cartItem.product.price }} nok</span></v-flex>
+                <v-flex xs12><span class="float-left">{{ cartItem.product.price }} nok</span></v-flex>
                 <v-flex xs12 class="text-left">
                     <v-icon @click="removeProduct(cartItem.product)">mdi-minus-circle-outline</v-icon>
                   <span class="ml-2">{{cartItem.quantity}}</span>

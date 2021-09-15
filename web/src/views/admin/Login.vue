@@ -23,7 +23,10 @@ export default {
         Password: this.password
       }
       axios.post(`/api/login`, payload).then(response => {
-        this.$cookie.set('access_token', response.data.token)
+        if(response.status === 200){
+          this.$cookie.set('access_token', response.data.token)
+          this.$router.push("/admin/dashboard")
+        }
       })
     }
   }

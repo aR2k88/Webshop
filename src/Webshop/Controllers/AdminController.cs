@@ -8,12 +8,11 @@ namespace Webshop.Controllers
     [Route("api/admin")]
     public class AdminController : ControllerBase
     {
+        [Route("valid")]
         [HttpGet]
-        public async Task<int> TestEndpoint()
+        public async Task<bool> ValidUser()
         {
-            var testValue = Request.Cookies["token"];
-            var test = 1223;
-            return test;
+            return true;
         }
     }
 }
